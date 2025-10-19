@@ -3,21 +3,38 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Image from "next/image";
-import { useState } from "react";
-import { Parkinsans } from "next/font/google";
-
-const parkinsans = Parkinsans({
-  subsets: ["latin"],
-  weight: "500",
-});
+import { useRef, useState } from "react";
+import Intro from "./components/intro/Intro";
+import Products from "./components/products/Products";
 
 const Docs = () => {
   const [intro, setIntro] = useState(false);
   const [showProduct, setShowProduct] = useState(false);
+  const [selectedPage, setSelectedPage] = useState("intro");
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleIntro = () => {
+    setIntro(!intro);
+    setSelectedPage("intro");
+  };
+
+  const handleProducts = () => {
+    setShowProduct(!showProduct);
+    setSelectedPage("products");
+  };
+
+  const scrollToSection = (id: string) => {
+    const section = contentRef.current?.querySelector<HTMLElement>(`#${id}`);
+    if (section && contentRef.current) {
+      const yOffset = -64;
+      const y = section.offsetTop + yOffset;
+      contentRef.current.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
 
   return (
     <div
-      className={`flex flex-col min-h-screen bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950 border-8 border-purple-300 ${parkinsans.className}`}
+      className={`flex flex-col min-h-screen bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950`}
     >
       {/* fixed header */}
       <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-purple-200 dark:border-zinc-800">
@@ -25,15 +42,16 @@ const Docs = () => {
       </div>
 
       {/* content for docs */}
-      <section className="p-4 flex max-w-full gap-2">
-        <nav className="w-[15%] border p-2 flex flex-col gap-2">
+      <section className="flex max-w-full">
+        {/* side bar navigation */}
+        <nav className="w-[15%] border p-2 flex flex-col gap-2 fixed bg-white z-50">
           {/* intro navigation */}
-          <div className="flex flex-col gap-2 hover:text-purple-600">
+          <div className="flex flex-col gap-2">
             <div
               className="flex items-center justify-between hover:cursor-pointer"
-              onClick={() => setIntro(!intro)}
+              onClick={handleIntro}
             >
-              <div className="flex gap-2 hover:text-purple-600">
+              <div className="flex gap-2 hover:text-purple-600 w-[90%]">
                 <Image src="/svg/home.svg" alt="home" width={32} height={32} />
                 <button className="text-left text-2xl hover:cursor-pointer">
                   Intro
@@ -85,22 +103,47 @@ const Docs = () => {
             {/* menu shown below intro */}
             {intro && (
               <div className="flex flex-col gap-2 ml-2 animate-fadeIn">
-                <button className="text-left">Status</button>
-                <button className="text-left">Host</button>
-                <button className="text-left">Platform</button>
-                <button className="text-left">Browser</button>
-                <button className="text-left">User Agent</button>
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("status")}
+                >
+                  Status
+                </button>
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("host")}
+                >
+                  Host
+                </button>
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("Platform")}
+                >
+                  Platform
+                </button>
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("browser")}
+                >
+                  Browser
+                </button>
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("userAgent")}
+                >
+                  User Agent
+                </button>
               </div>
             )}
           </div>
 
           {/* products navigation */}
-          <div className="flex flex-col gap-2 hover:text-purple-600">
+          <div className="flex flex-col gap-2">
             <div
               className="flex items-center justify-between hover:cursor-pointer"
-              onClick={() => setShowProduct(!showProduct)}
+              onClick={handleProducts}
             >
-              <div className="flex gap-2 hover:text-purple-600">
+              <div className="flex gap-2 hover:text-purple-600 w-[90%]">
                 <Image
                   src="/svg/products.svg"
                   alt="products"
@@ -157,19 +200,37 @@ const Docs = () => {
             {/* products menu */}
             {showProduct && (
               <div className="flex flex-col gap-2 ml-2 animate-fadeIn">
-                <button className="text-left">All products</button>
-                <button className="text-left">Single product with Id</button>
-                <button className="text-left">Search product</button>
-                <button className="text-left">Limit products quantity</button>
-                <button className="text-left">Limit and skip products</button>
-                <button className="text-left">Products categories</button>
+                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                  All products
+                </button>
+                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                  Single product with Id
+                </button>
+                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                  Search product
+                </button>
+                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                  Limit products quantity
+                </button>
+                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                  Limit and skip products
+                </button>
+                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                  Products categories
+                </button>
               </div>
             )}
           </div>
         </nav>
 
-        <article>
-          <p>Content on the basis of the side bar navigation</p>
+        {/* content loader for the sidebar */}
+        <article
+          ref={contentRef}
+          className="flex-1 ml-[15%]  border overflow-y-auto"
+          style={{ maxHeight: "calc(100vh - 80px)" }}
+        >
+          {selectedPage === "intro" && <Intro />}
+          {selectedPage === "products" && <Products />}
         </article>
       </section>
 
