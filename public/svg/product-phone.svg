@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="200" height="200" role="img" aria-label="Smartphone">
+  <title>Smartphone</title>
+  <rect x="16" y="6" width="32" height="52" rx="4" fill="#EAEAF6"/>
+  <rect x="19" y="10" width="26" height="40" rx="2" fill="#FFFFFF"/>
+  <circle cx="32" cy="52" r="1.8" fill="#D1D5DB"/>
+  <rect x="26" y="14" width="12" height="6" rx="1" fill="#EEF2FF"/>
+  <rect x="22" y="24" width="20" height="18" rx="2" fill="#F8FAFF"/>
+  <rect x="22" y="24" width="20" height="4" rx="1" fill="#E2E8F0"/>
+</svg>

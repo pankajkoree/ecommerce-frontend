@@ -1,10 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Licorice } from "next/font/google";
+
+const licorice = Licorice({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const Header = () => {
   const [isDark, setIsDark] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -29,28 +38,125 @@ const Header = () => {
   }
 
   return (
-    <div className="flex justify-between">
-      <h1>DummyProducts</h1>
-      <nav className="flex gap-8">
-        <Link href="/">
-          <p>Home</p>
+    <header className="sticky top-0 z-50 w-full border-b border-purple-200 dark:border-zinc-800 backdrop-blur-xl bg-white/70 dark:bg-zinc-900/50">
+      <div className="flex items-center justify-between max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8">
+        {/* Brand / Logo */}
+        <Link
+          href="/"
+          className={` text-2xl lg:text-4xl font-extrabold text-purple-600 dark:text-purple-400 ${licorice.className}`}
+        >
+          DummyProducts
         </Link>
-        <Link href="/docs">
-          <p>Docs</p>
-        </Link>
-        <Link href="https://github.com/pankajkoree/ecommerce-frontend">
-          <p>Github</p>
-        </Link>
-        <Image
-          src="/theme.png"
-          width={20}
-          height={20}
-          alt="theme"
-          className="hover:cursor-pointer"
-          onClick={changeTheme}
-        />
-      </nav>
-    </div>
+
+        {/* Desktop navigation */}
+        <nav className="hidden md:flex gap-8 items-center text-zinc-700 dark:text-zinc-200 text-lg font-medium">
+          <Link
+            href="/"
+            className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+          >
+            Home
+          </Link>
+          <Link
+            href="/docs"
+            className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+          >
+            Docs
+          </Link>
+          <Link
+            href="https://github.com/pankajkoree/ecommerce-frontend"
+            className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/github.svg"
+              width={20}
+              height={20}
+              alt="github"
+              className="opacity-80 hover:opacity-100 transition-opacity"
+            />
+            Github
+          </Link>
+
+          <button
+            onClick={changeTheme}
+            className="flex items-center justify-center rounded-full"
+            aria-label="Toggle Theme"
+          >
+            <Image src="/theme.png" width={32} height={20} alt="theme" />
+          </button>
+        </nav>
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden flex items-center justify-center p-2 rounded-md hover:bg-purple-100 dark:hover:bg-zinc-800"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle Menu"
+        >
+          <svg
+            className="h-6 w-6 text-zinc-700 dark:text-zinc-200"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            {menuOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 8h16M4 16h16"
+              />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile dropdown menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border-t border-purple-200 dark:border-zinc-800">
+          <nav className="flex flex-col items-center gap-4 py-4 text-lg font-medium text-zinc-700 dark:text-zinc-200">
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-purple-600 dark:hover:text-purple-400"
+            >
+              Home
+            </Link>
+            <Link
+              href="/docs"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-purple-600 dark:hover:text-purple-400"
+            >
+              Docs
+            </Link>
+            <Link
+              href="https://github.com/pankajkoree/ecommerce-frontend"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-400"
+            >
+              <Image src="/github.svg" width={20} height={20} alt="github" />
+              Github
+            </Link>
+
+            <button
+              onClick={changeTheme}
+              className="flex items-center gap-2 rounded-full p-2 bg-purple-100 dark:bg-zinc-800 hover:scale-105 transition-transform"
+            >
+              <Image src="/theme.png" width={20} height={20} alt="theme" />
+            </button>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 };
 
