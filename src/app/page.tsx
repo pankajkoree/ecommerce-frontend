@@ -24,11 +24,11 @@ export default function Home() {
         </p>
 
         {/* CTA buttons */}
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <div className="mt-8 flex flex-wrap justify-center gap-4 font-bold">
           <a
             href="/docs"
             rel="noopener noreferrer"
-            className="px-6 py-3 border-2 border-purple-300"
+            className="px-6 py-3 bg-white  dark:bg-zinc-900 shadow shadow-purple-300 hover:shadow-lg transition-all duration-300"
           >
             Read Docs
           </a>
@@ -36,14 +36,15 @@ export default function Home() {
             href="https://github.com/pankajkoree/ecommerce-frontend"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 border-2 border-purple-300"
+            className="px-6 py-3 bg-white dark:bg-zinc-900 shadow shadow-purple-300 hover:shadow-lg transition-all duration-300"
           >
             View Github
           </a>
         </div>
 
         {/* Example SVG products section */}
-        <section className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <section className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 font-bold">
           {[
             { name: "Smartphone", svg: "/svg/smartphones.svg" },
             { name: "Laptop", svg: "/svg/laptops.svg" },
@@ -56,7 +57,7 @@ export default function Home() {
           ].map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center bg-white dark:bg-zinc-900 p-4 rounded-2xl shadow hover:shadow-lg transition-all duration-300"
+              className="flex flex-col items-center bg-white dark:bg-zinc-900 p-4 rounded-2xl shadow shadow-purple-300 hover:shadow-xl transition-all duration-300"
             >
               <Image
                 src={item.svg}
