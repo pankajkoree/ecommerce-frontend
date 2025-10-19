@@ -117,7 +117,7 @@ const Docs = () => {
                 </button>
                 <button
                   className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("Platform")}
+                  onClick={() => scrollToSection("platform")}
                 >
                   Platform
                 </button>
