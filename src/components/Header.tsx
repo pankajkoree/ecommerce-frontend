@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Licorice } from "next/font/google";
+import { Yellowtail } from "next/font/google";
 
-const licorice = Licorice({
+const yellowtail = Yellowtail({
   subsets: ["latin"],
   weight: "400",
 });
@@ -43,7 +43,7 @@ const Header = () => {
         {/* Brand / Logo */}
         <Link
           href="/"
-          className={` text-2xl lg:text-4xl font-extrabold text-purple-600 dark:text-purple-400 ${licorice.className}`}
+          className={` text-2xl lg:text-4xl font-extrabold text-purple-600 dark:text-purple-400 ${yellowtail.className}`}
         >
           DummyProducts
         </Link>
