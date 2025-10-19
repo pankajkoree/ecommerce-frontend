@@ -11,7 +11,7 @@ const parkinsans = Parkinsans({
   weight: "500",
 });
 
-const docs = () => {
+const Docs = () => {
   const [intro, setIntro] = useState(false);
   const [showProduct, setShowProduct] = useState(false);
 
@@ -181,4 +181,4 @@ const docs = () => {
   );
 };
 
-export default docs;
+export default Docs;
