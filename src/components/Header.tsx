@@ -3,29 +3,31 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Header = () => {
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "dark";
-    }
-    return false;
-  });
+  const [isDark, setIsDark] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
+    setIsMounted(true);
+    const storedTheme = localStorage.getItem("theme");
+    const dark = storedTheme === "dark";
+    document.documentElement.classList.toggle("dark", dark);
+    setIsDark(dark);
+  }, []);
 
-    try {
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    } catch (error) {
-      console.warn("unable to access localstorage : ", error);
-    }
-    const appliedTheme = localStorage.getItem("theme");
-    if (appliedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      setIsDark(true);
-    }
-  }, [isDark]);
+  useEffect(() => {
+    if (!isMounted) return;
+    document.documentElement.classList.toggle("dark", isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }, [isDark, isMounted]);
 
   const changeTheme = () => setIsDark((old) => !old);
+
+  if (!isMounted) {
+    return (
+      <div className="h-6 w-6 rounded bg-gray-300 dark:bg-gray-600 animate-pulse" />
+    );
+  }
+
   return (
     <div className="flex justify-between">
       <h1>DummyProducts</h1>
