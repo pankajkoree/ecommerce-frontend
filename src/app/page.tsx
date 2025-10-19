@@ -45,14 +45,14 @@ export default function Home() {
         {/* Example SVG products section */}
         <section className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
           {[
-            { name: "Smartphone", svg: "/svg/product-phone.svg" },
-            { name: "Laptop", svg: "/svg/product-laptop.svg" },
-            { name: "Headphones", svg: "/svg/product-headphones.svg" },
-            { name: "Camera", svg: "/svg/product-camera.svg" },
-            { name: "Shoes", svg: "/svg/product-shoes.svg" },
-            { name: "Watch", svg: "/svg/product-watch.svg" },
-            { name: "Furniture", svg: "/svg/product-furniture.svg" },
-            { name: "Perfume", svg: "/svg/product-perfume.svg" },
+            { name: "Smartphone", svg: "/svg/smartphones.svg" },
+            { name: "Laptop", svg: "/svg/laptops.svg" },
+            { name: "Groceries", svg: "/svg/groceries.svg" },
+            { name: "Beauty", svg: "/svg/beauty.svg" },
+            { name: "Shoes", svg: "/svg/shoes.svg" },
+            { name: "Watch", svg: "/svg/watch.svg" },
+            { name: "Furniture", svg: "/svg/furniture.svg" },
+            { name: "Mobile Accessories", svg: "/svg/accessories.svg" },
           ].map((item, index) => (
             <div
               key={index}

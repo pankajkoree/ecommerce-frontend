@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="200" height="200" role="img" aria-label="Perfume">
-  <title>Perfume</title>
-  <rect x="22" y="14" width="20" height="30" rx="3" fill="#FFF5FB"/>
-  <rect x="26" y="10" width="12" height="6" rx="1" fill="#FCEAF8"/>
-  <rect x="28" y="22" width="8" height="14" rx="2" fill="#FFF0F6"/>
-  <circle cx="32" cy="36" r="3" fill="#FADBF4"/>
-</svg>

@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="200" height="200" role="img" aria-label="Camera">
-  <title>Camera</title>
-  <rect x="8" y="14" width="48" height="34" rx="4" fill="#F8FAFF"/>
-  <rect x="14" y="18" width="8" height="6" rx="1" fill="#EEF2FF"/>
-  <circle cx="32" cy="32" r="10" fill="#FFFFFF"/>
-  <circle cx="32" cy="32" r="6" fill="#EEF2FF"/>
-  <rect x="44" y="22" width="6" height="6" rx="1" fill="#E6E9F2"/>
-</svg>

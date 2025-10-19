@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="200" height="200" role="img" aria-label="Furniture">
-  <title>Furniture</title>
-  <rect x="8" y="30" width="48" height="18" rx="2" fill="#FFF8EC"/>
-  <rect x="14" y="22" width="36" height="12" rx="2" fill="#FFF2D9"/>
-  <rect x="12" y="48" width="6" height="6" rx="1" fill="#EDE7FF"/>
-  <rect x="46" y="48" width="6" height="6" rx="1" fill="#EDE7FF"/>
-  <path d="M20 34h24" stroke="#E0D8C2" stroke-width="2" stroke-linecap="round"/>
-</svg>
