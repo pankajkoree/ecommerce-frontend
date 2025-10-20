@@ -1,23 +1,51 @@
 const Intro = () => {
   return (
     <div>
-      <h1 className="bg-green-200 h-60">Intro</h1>
-      <div className="bg-purple-400 h-80" id="status">
+      <section>
+        <header className="p-4 leading-relaxed text-2xl">
+          <h1 className="text-3xl text-purple-600 dark:text-purple-400 font-bold mb-2">
+            🛍️ DummyProducts - Docs
+          </h1>
+          <p>
+            <span>
+              DummyProducts is a free and lightweight mock API built for
+              developers who need realistic eCommerce data for their front-end
+              projects. You can use it to quickly prototype, build, or test
+              applications without setting up a real database. It provides
+              ready-to-use endpoints for ecommerce products in clean JSON
+              format. <br />
+            </span>
+            <span>
+              Use the examples below to explore how DummyProducts works and
+              integrate it easily to the projects. <br />
+            </span>
+            <span>
+              ⚡ Perfect for React, Next.js, Vue, Angular, or any
+              REST-compatible frontend. <br />
+            </span>
+            <span>
+              Enjoy developing with DummyProducts — your ultimate dummy
+              eCommerce data source! 🚀
+            </span>
+          </p>
+        </header>
+      </section>
+      <section className="bg-purple-400 h-80" id="status">
         <h1>status</h1>
-      </div>
-      <div className="bg-yellow-400 h-80" id="host">
+      </section>
+      <section className="bg-yellow-400 h-80" id="host">
         <h1>host</h1>
-      </div>
+      </section>
 
-      <div className="bg-green-400 h-80" id="platform">
+      <section className="bg-green-400 h-80" id="platform">
         <h2>local</h2>
-      </div>
-      <div id="browser" className="bg-red-400 h-80">
+      </section>
+      <section id="browser" className="bg-red-400 h-80">
         <h3>local</h3>
-      </div>
-      <div id="userAgent" className="bg-blue-400 h-80">
+      </section>
+      <section id="userAgent" className="bg-blue-400 h-80">
         <h2>user agent</h2>
-      </div>
+      </section>
     </div>
   );
 };
