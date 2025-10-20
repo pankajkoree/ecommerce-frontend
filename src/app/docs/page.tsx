@@ -1,7 +1,5 @@
 "use client";
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Intro from "./components/intro/Intro";
@@ -36,11 +34,6 @@ const Docs = () => {
     <div
       className={`flex flex-col min-h-screen bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950`}
     >
-      {/* fixed header */}
-      <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-purple-200 dark:border-zinc-800">
-        <Header />
-      </div>
-
       {/* content for docs */}
       <section className="flex max-w-full">
         {/* side bar navigation */}
@@ -235,11 +228,6 @@ const Docs = () => {
       </section>
 
       {/* content for docs end */}
-
-      {/* footer */}
-      <div className="sticky bottom-0 z-50">
-        <Footer />
-      </div>
     </div>
   );
 };
