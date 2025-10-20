@@ -30,8 +30,11 @@ const Intro = () => {
           </p>
         </header>
       </section>
-      <section className="bg-purple-400 h-80" id="status">
-        <h1>status</h1>
+      <section className="bg-purple-400 h-80 text-xl  " id="status">
+        <header>
+          <h1>API Status</h1>
+          <p>Check if internet is working 🫣 </p>
+        </header>
       </section>
       <section className="bg-yellow-400 h-80" id="host">
         <h1>host</h1>
