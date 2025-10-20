@@ -3,7 +3,11 @@ import { useState } from "react";
 const Intro = () => {
   const [status, setStatus] = useState(false);
   const [host, setHost] = useState(false);
+  const [platform, setPlatform] = useState(false);
+  const [browser, setBrowser] = useState(false);
+  const [userAgent, setUserAgent] = useState(false);
 
+  // codes for all intro menus
   const getStatusCode = `
   fetch('https://ecommerce-backend-r0s1.onrender.com/')
   .then(res => res.json())
@@ -16,8 +20,32 @@ const Intro = () => {
   .then(res => res.json())
   .then(console.log);
 
+  `;
+
+  const getPlatformCode = `
+  fetch('https://ecommerce-backend-r0s1.onrender.com/platform')
+  .then(res => res.json())
+  .then(console.log);
+
 `;
 
+  const getBrowserCode = `
+  fetch('https://ecommerce-backend-r0s1.onrender.com/browser')
+  .then(res => res.json())
+  .then(console.log);
+
+`;
+
+  const getUserAgentCode = `
+  fetch('https://ecommerce-backend-r0s1.onrender.com/userAgent')
+  .then(res => res.json())
+  .then(console.log);
+
+`;
+
+  // end codes for all intro menus
+
+  // handle Click for all intro menus
   const copyStatusCode = async () => {
     try {
       await navigator.clipboard.writeText(getStatusCode);
@@ -37,6 +65,39 @@ const Intro = () => {
       console.error("Failed to copy!", err);
     }
   };
+
+  const copyPlatformCode = async () => {
+    try {
+      await navigator.clipboard.writeText(getPlatformCode);
+      setPlatform(true);
+      setTimeout(() => setPlatform(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
+  };
+
+  const copyBrowserCode = async () => {
+    try {
+      await navigator.clipboard.writeText(getBrowserCode);
+      setBrowser(true);
+      setTimeout(() => setBrowser(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
+  };
+
+  const copyUserAgentCode = async () => {
+    try {
+      await navigator.clipboard.writeText(getUserAgentCode);
+      setUserAgent(true);
+      setTimeout(() => setUserAgent(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
+  };
+
+  // end handle Click for all intro menus
+
   return (
     <div>
       {/* section for dummy intro */}
@@ -123,15 +184,79 @@ const Intro = () => {
       </section>
       {/* end get host */}
 
-      <section className="bg-green-400 h-80" id="platform">
-        <h2>local</h2>
+      {/* get platform */}
+      <section className="text-xl p-4" id="platform">
+        <header>
+          <h1>Get Platform</h1>
+          <p>Run this to see on which platform of OS you are running on </p>
+          {/* code div */}
+          <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
+            <pre>
+              <code>{getPlatformCode}</code>
+            </pre>
+            <button
+              onClick={copyPlatformCode}
+              className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded hover:bg-green-600 transition"
+            >
+              {platform ? "Copied!" : "Copy"}
+            </button>
+          </div>
+          {/* code div end */}
+        </header>
+
+        {/* div to add a line below to declare as a border */}
+        <p className="bg-[#e8eded] h-1 flex mt-8"></p>
+        {/* div to add a line below to declare as a border */}
       </section>
-      <section id="browser" className="bg-red-400 h-80">
-        <h3>local</h3>
+      {/* end get platform */}
+
+      {/* get browser */}
+      <section id="browser" className="text-xl p-4">
+        <header>
+          <h1>Get Browser Info</h1>
+          <p>Run this to see on which browser you are running on </p>
+          {/* code div */}
+          <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
+            <pre>
+              <code>{getBrowserCode}</code>
+            </pre>
+            <button
+              onClick={copyBrowserCode}
+              className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded hover:bg-green-600 transition"
+            >
+              {browser ? "Copied!" : "Copy"}
+            </button>
+          </div>
+          {/* code div end */}
+        </header>
+
+        {/* div to add a line below to declare as a border */}
+        <p className="bg-[#e8eded] h-1 flex mt-8"></p>
+        {/* div to add a line below to declare as a border */}
       </section>
-      <section id="userAgent" className="bg-blue-400 h-80">
-        <h2>user agent</h2>
+      {/* end get browser */}
+
+      {/* user Agent */}
+      <section id="userAgent" className="text-xl p-4">
+        <header>
+          <h1>Get userAgent Info</h1>
+          <p>Run this to see the user agent info </p>
+          {/* code div */}
+          <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
+            <pre>
+              <code>{getUserAgentCode}</code>
+            </pre>
+            <button
+              onClick={copyUserAgentCode}
+              className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded hover:bg-green-600 transition"
+            >
+              {userAgent ? "Copied!" : "Copy"}
+            </button>
+          </div>
+          {/* code div end */}
+        </header>
       </section>
+      {/* end user agent */}
     </div>
   );
 };

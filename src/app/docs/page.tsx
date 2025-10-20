@@ -44,7 +44,7 @@ const Docs = () => {
       {/* content for docs */}
       <section className="flex max-w-full">
         {/* side bar navigation */}
-        <nav className="w-[15%] border ml-2 mt-2 p-2 flex flex-col gap-2 fixed bg-white dark:bg-[#16161a] shadow-lg shadow-purple-200 z-50">
+        <nav className="w-[15%] ml-2 mt-2 p-2 flex flex-col gap-2 fixed bg-white dark:bg-[#16161a] shadow-lg shadow-purple-200 z-50">
           {/* intro navigation */}
           <div className="flex flex-col gap-2">
             <div
@@ -226,7 +226,7 @@ const Docs = () => {
         {/* content loader for the sidebar */}
         <article
           ref={contentRef}
-          className="flex-1 ml-[16%] mt-2 border overflow-y-auto"
+          className="flex-1 ml-[16%] mt-2 overflow-y-auto"
           style={{ maxHeight: "calc(100vh - 80px)" }}
         >
           {selectedPage === "intro" && <Intro />}
