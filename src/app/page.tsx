@@ -57,7 +57,7 @@ export default function Home() {
           ].map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center bg-white dark:bg-zinc-900 p-4 rounded-2xl shadow shadow-purple-300 hover:shadow-xl transition-all duration-300"
+              className="flex flex-col items-center bg-white dark:bg-zinc-900 p-4 rounded-2xl shadow shadow-purple-300 hover:shadow-xl transition-all duration-300 hover:cursor-pointer"
             >
               <Image
                 src={item.svg}
@@ -75,7 +75,9 @@ export default function Home() {
       </main>
 
       {/* footer */}
-      <Footer />
+      <div className="sticky bottom-0 z-50">
+        <Footer />
+      </div>
     </div>
   );
 }

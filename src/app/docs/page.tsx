@@ -237,7 +237,9 @@ const Docs = () => {
       {/* content for docs end */}
 
       {/* footer */}
-      <Footer />
+      <div className="sticky bottom-0 z-50">
+        <Footer />
+      </div>
     </div>
   );
 };
