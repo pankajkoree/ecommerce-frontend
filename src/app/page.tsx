@@ -4,11 +4,9 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950">
-     
-
+    <div className="flex flex-col bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950">
       {/* main content */}
-      <main className="flex flex-col items-center justify-center flex-1 text-center px-6 md:px-16 py-16">
+      <main className="flex flex-col items-center justify-center flex-1 text-center px-6 md:px-16 py-12">
         <h1 className="text-4xl text- md:text-6xl font-bold text-purple-600 dark:text-purple-400">
           Free REST API for Ecommerce Products Data
         </h1>
@@ -52,7 +50,7 @@ export default function Home() {
           ].map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center bg-white dark:bg-zinc-900 p-4 rounded-2xl shadow shadow-purple-300 hover:shadow-xl transition-all duration-300 hover:cursor-pointer"
+              className="flex flex-col items-center bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow shadow-purple-300 hover:shadow-xl transition-all duration-300 hover:cursor-pointer gap-4"
             >
               <Image
                 src={item.svg}
