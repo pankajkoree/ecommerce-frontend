@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Quintessential } from "next/font/google";
 
 const yellowtail = Quintessential({
@@ -14,6 +15,7 @@ const Header = () => {
   const [isDark, setIsDark] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname(); // ✅ Active path
 
   useEffect(() => {
     setIsMounted(true);
@@ -52,19 +54,29 @@ const Header = () => {
         <nav className="hidden md:flex gap-8 items-center text-zinc-700 dark:text-zinc-200 text-lg font-medium">
           <Link
             href="/"
-            className="hover:text-blue-400 dark:hover:text-purple-400 transition-colors"
+            className={`transition-colors ${
+              pathname === "/"
+                ? "text-blue-500"
+                : "hover:text-blue-400"
+            }`}
           >
             Home
           </Link>
+
           <Link
             href="/docs"
-            className="hover:text-blue-400 dark:hover:text-purple-400 transition-colors"
+            className={`transition-colors ${
+              pathname.startsWith("/docs")
+                ? "text-blue-500"
+                : "hover:text-blue-400"
+            }`}
           >
             Docs
           </Link>
+
           <Link
             href="https://github.com/pankajkoree/ecommerce-frontend"
-            className="flex items-center gap-2 hover:text-blue-400 dark:hover:text-purple-400 transition-colors"
+            className="flex items-center gap-2 hover:text-blue-400 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -126,22 +138,30 @@ const Header = () => {
             <Link
               href="/"
               onClick={() => setMenuOpen(false)}
-              className="hover:text-blue-400 dark:hover:text-purple-400"
+              className={`${
+                pathname === "/" ? "text-blue-500" : "hover:text-blue-400"
+              }`}
             >
               Home
             </Link>
+
             <Link
               href="/docs"
               onClick={() => setMenuOpen(false)}
-              className="hover:text-blue-400 dark:hover:text-purple-400"
+              className={`${
+                pathname.startsWith("/docs")
+                  ? "text-blue-500"
+                  : "hover:text-blue-400"
+              }`}
             >
               Docs
             </Link>
+
             <Link
               href="https://github.com/pankajkoree/ecommerce-frontend"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-blue-400 dark:hover:text-purple-400"
+              className="flex items-center gap-2 hover:text-blue-400"
             >
               <Image src="/github.svg" width={20} height={20} alt="github" />
               Github

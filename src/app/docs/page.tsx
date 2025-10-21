@@ -142,7 +142,7 @@ const Docs = () => {
                   width={32}
                   height={32}
                 />
-                <button className="text-left text-2xl hover:cursor-pointer">
+                <button className={`text-left text-2xl hover:cursor-pointer`}>
                   Products
                 </button>
               </div>
