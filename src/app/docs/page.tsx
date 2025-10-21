@@ -193,22 +193,40 @@ const Docs = () => {
             {/* products menu */}
             {showProduct && (
               <div className="flex flex-col gap-2 ml-2 animate-fadeIn">
-                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("getAllProducts")}
+                >
                   All products
                 </button>
-                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("getSingleProductWithId")}
+                >
                   Single product with Id
                 </button>
-                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("getSearchProduct")}
+                >
                   Search product
                 </button>
-                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("getLimitedProducts")}
+                >
                   Limit products quantity
                 </button>
-                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("getLimitedSkippedProducts")}
+                >
                   Limit and skip products
                 </button>
-                <button className="text-left hover:text-purple-600 hover:cursor-pointer">
+                <button
+                  className="text-left hover:text-purple-600 hover:cursor-pointer"
+                  onClick={() => scrollToSection("getProductsCategories")}
+                >
                   Products categories
                 </button>
               </div>
