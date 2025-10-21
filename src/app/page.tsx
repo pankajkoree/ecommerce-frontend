@@ -1,8 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+  const handleClick = (categoryName: string) => {
+    router.push(
+      `https://ecommerce-backend-r0s1.onrender.com/api/products/category/${categoryName}`
+    );
+  };
   return (
     <div className="flex flex-col bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950">
       {/* main content */}
@@ -46,11 +53,12 @@ export default function Home() {
             { name: "Shoes", svg: "/svg/shoes.svg" },
             { name: "Watch", svg: "/svg/watch.svg" },
             { name: "Furniture", svg: "/svg/furniture.svg" },
-            { name: "Mobile Accessories", svg: "/svg/accessories.svg" },
+            { name: "Accessories", svg: "/svg/accessories.svg" },
           ].map((item, index) => (
             <div
               key={index}
               className="flex flex-col items-center bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow shadow-gray-600 hover:shadow-xl transition-all duration-300 hover:cursor-pointer gap-4"
+              onClick={() => handleClick(item.name)}
             >
               <Image
                 src={item.svg}
