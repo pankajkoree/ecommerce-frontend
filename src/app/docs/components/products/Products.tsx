@@ -51,7 +51,6 @@ const Products = () => {
   .then(console.log);
 
 `;
-
   // end codes for all intro menus
 
   // handle Click for all intro menus
@@ -114,7 +113,6 @@ const Products = () => {
       console.error("Failed to copy!", err);
     }
   };
-
   // end handle Click for all intro menus
 
   return (
@@ -140,6 +138,7 @@ const Products = () => {
             <h1 className="text-3xl font-bold mb-2">Products - Docs</h1>
           </div>
           {/* end heading div */}
+
           {/* heading content */}
           <p>
             The <strong>Products API</strong> offers structured access to
@@ -151,17 +150,16 @@ const Products = () => {
             helping developers build dynamic, data-driven shopping experiences
             with ease.
           </p>
-
           {/* end heading content */}
         </header>
       </section>
-      {/* send ection for dummy intro */}
+      {/* end section for dummy intro */}
 
       {/* get Prodcuts */}
-      <section className="text-xl p-4" id="getAllProducts">
+      <section className="p-4" id="getAllProducts">
         <header>
-          <h1>Get all products</h1>
-          <p>To fetch all the products with their details </p>
+          <h1 className="text-xl">Get all products</h1>
+          <p className="text-sm">To fetch all the products with their details </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
             <pre>
@@ -184,15 +182,16 @@ const Products = () => {
       {/* end get products */}
 
       {/* get single product with id */}
-      <section className="text-xl p-4" id="getSingleProductWithId">
+      <section className="p-4" id="getSingleProductWithId">
         <header>
-          <h1>Get single product with id</h1>
-          <p>
+          <h1 className="text-xl">Get single product with id</h1>
+          <p className="text-sm">
             To get the products with id, add the{" "}
             <span className="text-blue-500">
               <em>id</em>
             </span>{" "}
-            at the end of the url{" "}
+            at the end of the url , as in the url, 12 is considered as the id,
+            replace the 12 with the id of the product you want the details for.
           </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
@@ -216,15 +215,17 @@ const Products = () => {
       {/* end get single product with id */}
 
       {/* get search product */}
-      <section className="text-xl p-4" id="getSearchProduct">
+      <section className="p-4" id="getSearchProduct">
         <header>
-          <h1>Get single product with id</h1>
-          <p>
-            To get the products with id, add the{" "}
+          <h1 className="text-xl">Search product with name</h1>
+          <p className="text-sm">
+            To get the products with product name, add the{" "}
             <span className="text-blue-500">
-              <em>id</em>
+              <em>name</em>
             </span>{" "}
-            at the end of the url{" "}
+            at the end of the url , as in the url apple is the name of the
+            product, replace that apple with the product name you want to search
+            for.
           </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
@@ -248,15 +249,17 @@ const Products = () => {
       {/* end get search product */}
 
       {/* get limited products */}
-      <section className="text-xl p-4" id="getLimitedProducts">
+      <section className="p-4" id="getLimitedProducts">
         <header>
-          <h1>Get single product with id</h1>
-          <p>
-            To get the products with id, add the{" "}
+          <h1 className="text-xl">Get products in limited quantity</h1>
+          <p className="text-sm">
+            To get the products with limited quantity, add the{" "}
             <span className="text-blue-500">
-              <em>id</em>
+              <em>number</em>
             </span>{" "}
-            at the end of the url{" "}
+            at the end of the url , so that the quantity of the products get
+            limited to that number, as in the url, 5 at the last is the number
+            of products.
           </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
@@ -280,15 +283,21 @@ const Products = () => {
       {/* end get limited products */}
 
       {/* get limtied skipped products */}
-      <section className="text-xl p-4" id="getLimitedSkippedProducts">
+      <section className="p-4" id="getLimitedSkippedProducts">
         <header>
-          <h1>Get single product with id</h1>
-          <p>
-            To get the products with id, add the{" "}
+          <h1 className="text-xl">Get skipped products in limited quantity</h1>
+          <p className="text-sm">
+            To get the products after skipping the{" "}
             <span className="text-blue-500">
-              <em>id</em>
+              <em>number</em>
             </span>{" "}
-            at the end of the url{" "}
+            of sequence of products in limted quantity. The number in skipped
+            and limited can be different. The{" "}
+            <span className="text-blue-500">
+              <em>number</em>
+            </span>{" "}
+            after the word limit is the skipping one and the last number is for
+            limited quantity of products.
           </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
@@ -312,16 +321,10 @@ const Products = () => {
       {/* end get limtied skipped products */}
 
       {/* get product categories */}
-      <section className="text-xl p-4" id="getProductsCategories">
+      <section className="p-4" id="getProductsCategories">
         <header>
-          <h1>Get single product with id</h1>
-          <p>
-            To get the products with id, add the{" "}
-            <span className="text-blue-500">
-              <em>id</em>
-            </span>{" "}
-            at the end of the url{" "}
-          </p>
+          <h1 className="text-xl">Get product categories</h1>
+          <p className="text-sm">To get the categories of the products</p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
             <pre>
@@ -336,10 +339,6 @@ const Products = () => {
           </div>
           {/* code div end */}
         </header>
-
-        {/* div to add a line below to declare as a border */}
-        <p className="bg-[#e8eded] h-1 flex mt-8"></p>
-        {/* div to add a line below to declare as a border */}
       </section>
       {/* end get product categories */}
     </div>
