@@ -103,9 +103,7 @@ const Intro = () => {
       {/* section for dummy intro */}
       <section>
         <header className="p-4 leading-relaxed text-2xl">
-          <h1 className="text-3xl font-bold mb-2">
-            🛍️ DummyProducts - Docs
-          </h1>
+          <h1 className="text-3xl font-bold mb-2">🛍️ DummyProducts - Docs</h1>
           <p>
             <span>
               DummyProducts is a free and lightweight mock API built for
@@ -133,10 +131,10 @@ const Intro = () => {
       {/* send ection for dummy intro */}
 
       {/* get status */}
-      <section className="text-xl p-4" id="status">
+      <section className="p-4" id="status">
         <header>
-          <h1>API Status</h1>
-          <p>Check if internet is working 🫣 </p>
+          <h1 className="text-xl">API Status</h1>
+          <p className="text-sm">Check if internet is working 🫣 </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
             <pre>
@@ -159,10 +157,10 @@ const Intro = () => {
       {/* end get status */}
 
       {/* get host */}
-      <section className="text-xl p-4" id="host">
+      <section className="p-4" id="host">
         <header>
-          <h1>Get Host</h1>
-          <p>Run this to see the host </p>
+          <h1 className="text-xl">Get Host</h1>
+          <p className="text-sm">Run this to see the host </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
             <pre>
@@ -185,10 +183,12 @@ const Intro = () => {
       {/* end get host */}
 
       {/* get platform */}
-      <section className="text-xl p-4" id="platform">
+      <section className="p-4" id="platform">
         <header>
-          <h1>Get Platform</h1>
-          <p>Run this to see on which platform of OS you are running on </p>
+          <h1 className="text-xl">Get Platform</h1>
+          <p className="text-sm">
+            Run this to see on which platform of OS you are running on{" "}
+          </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
             <pre>
@@ -211,10 +211,12 @@ const Intro = () => {
       {/* end get platform */}
 
       {/* get browser */}
-      <section id="browser" className="text-xl p-4">
+      <section id="browser" className="p-4">
         <header>
-          <h1>Get Browser Info</h1>
-          <p>Run this to see on which browser you are running on </p>
+          <h1 className="text-xl">Get Browser Info</h1>
+          <p className="text-sm">
+            Run this to see on which browser you are running on{" "}
+          </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
             <pre>
@@ -237,10 +239,10 @@ const Intro = () => {
       {/* end get browser */}
 
       {/* user Agent */}
-      <section id="userAgent" className="text-xl p-4">
+      <section id="userAgent" className="p-4">
         <header>
-          <h1>Get userAgent Info</h1>
-          <p>Run this to see the user agent info </p>
+          <h1 className="text-xl">Get userAgent Info</h1>
+          <p className="text-sm">Run this to see the user agent info </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
             <pre>
