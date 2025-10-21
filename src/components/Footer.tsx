@@ -31,7 +31,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            className="hover:text-blue-400 dark:hover:text-purple-400 transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

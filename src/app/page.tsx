@@ -7,7 +7,7 @@ export default function Home() {
     <div className="flex flex-col bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950">
       {/* main content */}
       <main className="flex flex-col items-center justify-center flex-1 text-center px-6 md:px-16 py-12">
-        <h1 className="text-4xl text- md:text-6xl font-bold text-purple-600 dark:text-purple-400">
+        <h1 className="text-4xl text- md:text-6xl font-bold">
           Free REST API for Ecommerce Products Data
         </h1>
         <p className="mt-4 text-lg md:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl">
@@ -21,7 +21,7 @@ export default function Home() {
           <a
             href="/docs"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-white  dark:bg-zinc-900 shadow shadow-purple-300 hover:shadow-lg transition-all duration-300"
+            className="px-6 py-3 bg-white  dark:bg-zinc-900 shadow shadow-gray-600 hover:shadow-lg transition-all duration-300"
           >
             Read Docs
           </a>
@@ -29,7 +29,7 @@ export default function Home() {
             href="https://github.com/pankajkoree/ecommerce-frontend"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-white dark:bg-zinc-900 shadow shadow-purple-300 hover:shadow-lg transition-all duration-300"
+            className="px-6 py-3 bg-white dark:bg-zinc-900 shadow shadow-gray-600 hover:shadow-lg transition-all duration-300"
           >
             View Github
           </a>
@@ -50,7 +50,7 @@ export default function Home() {
           ].map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow shadow-purple-300 hover:shadow-xl transition-all duration-300 hover:cursor-pointer gap-4"
+              className="flex flex-col items-center bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow shadow-gray-600 hover:shadow-xl transition-all duration-300 hover:cursor-pointer gap-4"
             >
               <Image
                 src={item.svg}

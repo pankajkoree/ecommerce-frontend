@@ -137,9 +137,7 @@ const Products = () => {
               <path d="m3.3 7 8.7 5 8.7-5" />
               <path d="M12 22V12" />
             </svg>
-            <h1 className="text-3xl text-purple-600 dark:text-purple-400 font-bold mb-2">
-              Products - Docs
-            </h1>
+            <h1 className="text-3xl font-bold mb-2">Products - Docs</h1>
           </div>
           {/* end heading div */}
           {/* heading content */}

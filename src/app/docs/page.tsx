@@ -37,25 +37,25 @@ const Docs = () => {
       {/* content for docs */}
       <section className="flex max-w-full">
         {/* side bar navigation */}
-        <nav className="w-[15%] ml-2 mt-2 p-2 flex flex-col gap-2 fixed bg-white dark:bg-[#16161a] shadow-lg shadow-purple-200 z-50">
+        <nav className="w-[15%] text-lg ml-2 mt-2 p-2 flex flex-col gap-2 fixed bg-white dark:bg-[#16161a] shadow-lg shadow-purple-200 z-50">
           {/* intro navigation */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4">
             <div
               className="flex items-center justify-between hover:cursor-pointer"
               onClick={handleIntro}
             >
-              <div className="flex gap-2 hover:text-purple-600 w-[90%]">
+              <div className="flex gap-4 hover:text-blue-400 w-[90%]">
                 <Image src="/svg/home.svg" alt="home" width={32} height={32} />
                 <button className="text-left text-2xl hover:cursor-pointer">
                   Intro
                 </button>
               </div>
               {/* arrow div */}
-              <div>
+              {/* <div>
                 {intro ? (
                   <svg
                     fill="currentColor"
-                    className="w-6 h-6 hover:text-purple-600"
+                    className="w-6 h-6 hover:text-blue-400"
                     version="1.1"
                     id="Layer_1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ const Docs = () => {
                 ) : (
                   <svg
                     fill="currentColor"
-                    className="w-6 h-6 hover:text-purple-600"
+                    className="w-6 h-6 hover:text-blue-400"
                     version="1.1"
                     id="Layer_1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -91,52 +91,51 @@ const Docs = () => {
                     </g>
                   </svg>
                 )}
-              </div>
+              </div> */}
             </div>
+
             {/* menu shown below intro */}
-            {intro && (
-              <div className="flex flex-col gap-2 ml-2 animate-fadeIn">
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("status")}
-                >
-                  Status
-                </button>
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("host")}
-                >
-                  Host
-                </button>
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("platform")}
-                >
-                  Platform
-                </button>
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("browser")}
-                >
-                  Browser
-                </button>
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("userAgent")}
-                >
-                  User Agent
-                </button>
-              </div>
-            )}
+            <div className="flex flex-col gap-4 ml-12 animate-fadeIn">
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("status")}
+              >
+                Status
+              </button>
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("host")}
+              >
+                Host
+              </button>
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("platform")}
+              >
+                Platform
+              </button>
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("browser")}
+              >
+                Browser
+              </button>
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("userAgent")}
+              >
+                User Agent
+              </button>
+            </div>
           </div>
 
           {/* products navigation */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col mt-12 gap-4">
             <div
               className="flex items-center justify-between hover:cursor-pointer"
               onClick={handleProducts}
             >
-              <div className="flex gap-2 hover:text-purple-600 w-[90%]">
+              <div className="flex gap-4 hover:text-blue-400 w-[90%]">
                 <Image
                   src="/svg/products.svg"
                   alt="products"
@@ -148,11 +147,11 @@ const Docs = () => {
                 </button>
               </div>
               {/* arrow div */}
-              <div>
+              {/* <div>
                 {showProduct ? (
                   <svg
                     fill="currentColor"
-                    className="w-6 h-6 hover:text-purple-600"
+                    className="w-6 h-6 hover:text-blue-400"
                     version="1.1"
                     id="Layer_1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +170,7 @@ const Docs = () => {
                 ) : (
                   <svg
                     fill="currentColor"
-                    className="w-6 h-6 hover:text-purple-600"
+                    className="w-6 h-6 hover:text-blue-400"
                     version="1.1"
                     id="Layer_1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -188,49 +187,48 @@ const Docs = () => {
                     </g>
                   </svg>
                 )}
-              </div>
+              </div> */}
             </div>
             {/* products menu */}
-            {showProduct && (
-              <div className="flex flex-col gap-2 ml-2 animate-fadeIn">
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("getAllProducts")}
-                >
-                  All products
-                </button>
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("getSingleProductWithId")}
-                >
-                  Single product with Id
-                </button>
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("getSearchProduct")}
-                >
-                  Search product
-                </button>
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("getLimitedProducts")}
-                >
-                  Limit products quantity
-                </button>
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("getLimitedSkippedProducts")}
-                >
-                  Limit and skip products
-                </button>
-                <button
-                  className="text-left hover:text-purple-600 hover:cursor-pointer"
-                  onClick={() => scrollToSection("getProductsCategories")}
-                >
-                  Products categories
-                </button>
-              </div>
-            )}
+
+            <div className="flex flex-col gap-4 ml-12 animate-fadeIn">
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("getAllProducts")}
+              >
+                All products
+              </button>
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("getSingleProductWithId")}
+              >
+                Single product with Id
+              </button>
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("getSearchProduct")}
+              >
+                Search product
+              </button>
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("getLimitedProducts")}
+              >
+                Limit products quantity
+              </button>
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("getLimitedSkippedProducts")}
+              >
+                Limit and skip products
+              </button>
+              <button
+                className="text-left hover:text-blue-400 hover:cursor-pointer"
+                onClick={() => scrollToSection("getProductsCategories")}
+              >
+                Products categories
+              </button>
+            </div>
           </div>
         </nav>
 

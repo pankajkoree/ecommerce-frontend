@@ -103,7 +103,7 @@ const Intro = () => {
       {/* section for dummy intro */}
       <section>
         <header className="p-4 leading-relaxed text-2xl">
-          <h1 className="text-3xl text-purple-600 dark:text-purple-400 font-bold mb-2">
+          <h1 className="text-3xl font-bold mb-2">
             🛍️ DummyProducts - Docs
           </h1>
           <p>

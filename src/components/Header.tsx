@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Yellowtail } from "next/font/google";
+import { Quintessential } from "next/font/google";
 
-const yellowtail = Yellowtail({
+const yellowtail = Quintessential({
   subsets: ["latin"],
   weight: "400",
 });
@@ -43,7 +43,7 @@ const Header = () => {
         {/* Brand / Logo */}
         <Link
           href="/"
-          className={` text-2xl lg:text-4xl font-extrabold text-purple-600 dark:text-purple-400 ${yellowtail.className}`}
+          className={`text-2xl lg:text-4xl font-extrabold dark:text-purple-400 ${yellowtail.className}`}
         >
           DummyProducts
         </Link>
@@ -52,19 +52,19 @@ const Header = () => {
         <nav className="hidden md:flex gap-8 items-center text-zinc-700 dark:text-zinc-200 text-lg font-medium">
           <Link
             href="/"
-            className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            className="hover:text-blue-400 dark:hover:text-purple-400 transition-colors"
           >
             Home
           </Link>
           <Link
             href="/docs"
-            className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            className="hover:text-blue-400 dark:hover:text-purple-400 transition-colors"
           >
             Docs
           </Link>
           <Link
             href="https://github.com/pankajkoree/ecommerce-frontend"
-            className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            className="flex items-center gap-2 hover:text-blue-400 dark:hover:text-purple-400 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -126,14 +126,14 @@ const Header = () => {
             <Link
               href="/"
               onClick={() => setMenuOpen(false)}
-              className="hover:text-purple-600 dark:hover:text-purple-400"
+              className="hover:text-blue-400 dark:hover:text-purple-400"
             >
               Home
             </Link>
             <Link
               href="/docs"
               onClick={() => setMenuOpen(false)}
-              className="hover:text-purple-600 dark:hover:text-purple-400"
+              className="hover:text-blue-400 dark:hover:text-purple-400"
             >
               Docs
             </Link>
@@ -141,7 +141,7 @@ const Header = () => {
               href="https://github.com/pankajkoree/ecommerce-frontend"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-purple-600 dark:hover:text-purple-400"
+              className="flex items-center gap-2 hover:text-blue-400 dark:hover:text-purple-400"
             >
               <Image src="/github.svg" width={20} height={20} alt="github" />
               Github
