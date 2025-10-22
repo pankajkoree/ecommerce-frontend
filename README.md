@@ -135,6 +135,7 @@ This project utilizes several open-source libraries and frameworks, including:
 *   Tailwind CSS
 *   Lucide React
 *   Radix UI
+*   DummyJSON
 
 We thank the developers and maintainers of these projects for their contributions to the open-source community.
 
