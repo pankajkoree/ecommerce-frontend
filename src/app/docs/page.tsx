@@ -10,6 +10,7 @@ const Docs = () => {
   const [showProduct, setShowProduct] = useState(false);
   const [selectedPage, setSelectedPage] = useState("intro");
   const contentRef = useRef<HTMLDivElement>(null);
+  const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
   const handleIntro = () => {
     setIntro(!intro);
@@ -30,25 +31,72 @@ const Docs = () => {
     }
   };
 
+  const handleViewMobileMenu = () => {
+    setMobileMenuVisible(true);
+  };
+  const handleHideMobileMenu = () => {
+    setMobileMenuVisible(false);
+  };
+
   return (
     <div
       className={`flex flex-col min-h-screen bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950`}
     >
+      {/* on mobile view, it appears only */}
+      <div
+        className={` ${
+          mobileMenuVisible ? "hidden" : "fixed"
+        }  top-18 left-3 z-50 flex items-center justify-center w-8 h-8 hover:cursor-pointer`}
+        onClick={handleViewMobileMenu}
+      >
+        <svg
+          fill="currentColor"
+          className="w-6 h-6"
+          version="1.1"
+          id="Layer_1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 297 297"
+        >
+          <g>
+            <path d="M279.368,24.726H102.992c-9.722,0-17.632,7.91-17.632,17.632V67.92c0,9.722,7.91,17.632,17.632,17.632h176.376c9.722,0,17.632-7.91,17.632-17.632V42.358C297,32.636,289.09,24.726,279.368,24.726z" />
+            <path d="M279.368,118.087H102.992c-9.722,0-17.632,7.91-17.632,17.632v25.562c0,9.722,7.91,17.632,17.632,17.632h176.376c9.722,0,17.632-7.91,17.632-17.632v-25.562C297,125.997,289.09,118.087,279.368,118.087z" />
+            <path d="M279.368,211.448H102.992c-9.722,0-17.632,7.91-17.632,17.633v25.561c0,9.722,7.91,17.632,17.632,17.632h176.376c9.722,0,17.632-7.91,17.632-17.632v-25.561C297,219.358,289.09,211.448,279.368,211.448z" />
+            <path d="M45.965,24.726H17.632C7.91,24.726,0,32.636,0,42.358V67.92c0,9.722,7.91,17.632,17.632,17.632h28.333c9.722,0,17.632-7.91,17.632-17.632V42.358C63.597,32.636,55.687,24.726,45.965,24.726z" />
+            <path d="M45.965,118.087H17.632C7.91,118.087,0,125.997,0,135.719v25.562c0,9.722,7.91,17.632,17.632,17.632h28.333c9.722,0,17.632-7.91,17.632-17.632v-25.562C63.597,125.997,55.687,118.087,45.965,118.087z" />
+            <path d="M45.965,211.448H17.632C7.91,211.448,0,219.358,0,229.081v25.561c0,9.722,7.91,17.632,17.632,17.632h28.333c9.722,0,17.632-7.91,17.632-17.632v-25.561C63.597,219.358,55.687,211.448,45.965,211.448z" />
+          </g>
+        </svg>
+      </div>
+      {/*end  on mobile view, it appears only */}
+
       {/* content for docs */}
       <section className="flex max-w-full">
         {/* side bar navigation */}
-        <nav className="w-[15%] text-lg ml-2 mt-2 p-2 flex flex-col gap-2 fixed bg-white dark:bg-[#16161a] shadow-lg shadow-purple-200 z-50">
+        <nav
+          className={`${
+            mobileMenuVisible ? "block" : "hidden"
+          }  w-[50%] lg:w-[15%] text-sm lg:text-lg ml-2 mt-6 lg:mt-2 p-2 md:flex flex-col gap-2 fixed bg-white dark:bg-[#16161a] shadow-lg shadow-purple-200 z-50`}
+        >
           {/* intro navigation */}
           <div className="flex flex-col gap-4">
             <div
               className="flex items-center justify-between hover:cursor-pointer"
               onClick={handleIntro}
             >
-              <div className="flex gap-4 hover:text-blue-400 w-[90%]">
+              <div className="flex gap-4 w-[90%]">
                 <Image src="/svg/home.svg" alt="home" width={32} height={32} />
-                <button className="text-left text-2xl hover:cursor-pointer">
+                <button className="text-left text-xl lg:text-2xl hover:cursor-pointer hover:text-blue-500">
                   Intro
                 </button>
+                <svg
+                  fill="currentColor"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`block md:hidden ml-6`}
+                  onClick={handleHideMobileMenu}
+                >
+                  <path d="M18.8,16l5.5-5.5c0.8-0.8,0.8-2,0-2.8l0,0C24,7.3,23.5,7,23,7c-0.5,0-1,0.2-1.4,0.6L16,13.2l-5.5-5.5  c-0.8-0.8-2.1-0.8-2.8,0C7.3,8,7,8.5,7,9.1s0.2,1,0.6,1.4l5.5,5.5l-5.5,5.5C7.3,21.9,7,22.4,7,23c0,0.5,0.2,1,0.6,1.4  C8,24.8,8.5,25,9,25c0.5,0,1-0.2,1.4-0.6l5.5-5.5l5.5,5.5c0.8,0.8,2.1,0.8,2.8,0c0.8-0.8,0.8-2.1,0-2.8L18.8,16z" />
+                </svg>
               </div>
               {/* arrow div */}
               {/* <div>
@@ -130,7 +178,7 @@ const Docs = () => {
           </div>
 
           {/* products navigation */}
-          <div className="flex flex-col mt-12 gap-4">
+          <div className="flex flex-col mt-8 lg:mt-12 gap-4">
             <div
               className="flex items-center justify-between hover:cursor-pointer"
               onClick={handleProducts}
@@ -142,7 +190,9 @@ const Docs = () => {
                   width={32}
                   height={32}
                 />
-                <button className={`text-left text-2xl hover:cursor-pointer`}>
+                <button
+                  className={`text-left text-xl lg:text-2xl hover:cursor-pointer`}
+                >
                   Products
                 </button>
               </div>
@@ -235,7 +285,7 @@ const Docs = () => {
         {/* content loader for the sidebar */}
         <article
           ref={contentRef}
-          className="flex-1 ml-[16%] mt-2 overflow-y-auto"
+          className="flex md:flex-1 md:ml-[16%]  md:top-0 text-justify overflow-y-auto"
           style={{ maxHeight: "calc(100vh - 80px)" }}
         >
           {selectedPage === "intro" && <Intro />}

@@ -15,7 +15,7 @@ const Header = () => {
   const [isDark, setIsDark] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname(); // ✅ Active path
+  const pathname = usePathname();
 
   useEffect(() => {
     setIsMounted(true);
@@ -45,7 +45,7 @@ const Header = () => {
         {/* Brand / Logo */}
         <Link
           href="/"
-          className={`text-2xl lg:text-4xl font-extrabold dark:text-purple-400 ${yellowtail.className}`}
+          className={`text-2xl lg:text-4xl font-extrabold ${yellowtail.className}`}
         >
           DummyProducts
         </Link>

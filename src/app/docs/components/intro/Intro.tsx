@@ -12,7 +12,7 @@ const Intro = () => {
   fetch('https://ecommerce-backend-r0s1.onrender.com/')
   .then(res => res.json())
   .then(console.log);
-
+  
 `;
 
   const getHostCode = `
@@ -99,12 +99,14 @@ const Intro = () => {
   // end handle Click for all intro menus
 
   return (
-    <div>
+    <div className="flex flex-col mt-6 md:mt-0 p-4 md:p-6 lg:p-8 max-w-full overflow-x-hidden">
       {/* section for dummy intro */}
-      <section>
-        <header className="p-4 leading-relaxed text-2xl">
-          <h1 className="text-3xl font-bold mb-2">🛍️ DummyProducts - Docs</h1>
-          <p>
+      <section className="max-w-full">
+        <header className="p-0 mt-4 md:mt-0 md:p-4 leading-relaxed text-base md:text-xl lg:text-2xl">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">
+            🛍️ DummyProducts - Docs
+          </h1>
+          <p className="break-words">
             <span>
               DummyProducts is a free and lightweight mock API built for
               developers who need realistic eCommerce data for their front-end
@@ -131,15 +133,14 @@ const Intro = () => {
       {/* send ection for dummy intro */}
 
       {/* get status */}
-      <section className="p-4" id="status">
-        <header>
-          <h1 className="text-xl">API Status</h1>
-          <p className="text-sm">Check if internet is working 🫣 </p>
+      <section className="p-0 mt-4 md:mt-0 md:p-4 max-w-full" id="status">
+        <header className="max-w-full">
+          <h1 className="text-lg md:text-xl lg:text-2xl break-words">API Status</h1>
+          <p className="text-sm md:text-base break-words">Check if internet is working 🫣 </p>
           {/* code div */}
-          <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
-            <pre>
-              <code>{getStatusCode}</code>
-            </pre>
+          <div className="relative top-0 md:top-2 text-xs md:text-sm bg-[#263238] text-green-300 p-2 md:p-4 lg:px-4 rounded-lg w-full overflow-x-auto">
+            <pre className="min-w-max md:min-w-0">{getStatusCode}</pre>
+
             <button
               onClick={copyStatusCode}
               className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded hover:bg-green-600 transition"
@@ -147,6 +148,10 @@ const Intro = () => {
               {status ? "Copied!" : "Copy"}
             </button>
           </div>
+          {/* Mobile scroll hint */}
+          <p className="md:hidden text-xs text-gray-400 text-center mt-2">
+            ← Scroll to see full code →
+          </p>
           {/* code div end */}
         </header>
 
@@ -157,13 +162,13 @@ const Intro = () => {
       {/* end get status */}
 
       {/* get host */}
-      <section className="p-4" id="host">
-        <header>
-          <h1 className="text-xl">Get Host</h1>
-          <p className="text-sm">Run this to see the host </p>
+      <section className="p-0 md:p-4 max-w-full" id="host">
+        <header className="max-w-full">
+          <h1 className="text-lg md:text-xl lg:text-2xl break-words">Get Host</h1>
+          <p className="text-sm md:text-base break-words">Run this to see the host </p>
           {/* code div */}
-          <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
-            <pre>
+          <div className="relative top-2 text-xs md:text-sm bg-[#263238] text-green-300 p-2 md:px-4 lg:px-4 rounded-lg w-full overflow-x-auto">
+            <pre className="min-w-max md:min-w-0">
               <code>{getHostCode}</code>
             </pre>
             <button
@@ -173,6 +178,10 @@ const Intro = () => {
               {host ? "Copied!" : "Copy"}
             </button>
           </div>
+          {/* Mobile scroll hint */}
+          <p className="md:hidden text-xs text-gray-400 text-center mt-2">
+            ← Scroll to see full code →
+          </p>
           {/* code div end */}
         </header>
 
@@ -183,15 +192,15 @@ const Intro = () => {
       {/* end get host */}
 
       {/* get platform */}
-      <section className="p-4" id="platform">
-        <header>
-          <h1 className="text-xl">Get Platform</h1>
-          <p className="text-sm">
+      <section className="p-0 md:p-4 max-w-full" id="platform">
+        <header className="max-w-full">
+          <h1 className="text-lg md:text-xl lg:text-2xl break-words">Get Platform</h1>
+          <p className="text-sm md:text-base break-words">
             Run this to see on which platform of OS you are running on{" "}
           </p>
           {/* code div */}
-          <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
-            <pre>
+          <div className="relative top-2 text-xs md:text-sm bg-[#263238] text-green-300 p-2 md:px-4 lg:px-4 rounded-lg w-full overflow-x-auto">
+            <pre className="min-w-max md:min-w-0">
               <code>{getPlatformCode}</code>
             </pre>
             <button
@@ -201,6 +210,10 @@ const Intro = () => {
               {platform ? "Copied!" : "Copy"}
             </button>
           </div>
+          {/* Mobile scroll hint */}
+          <p className="md:hidden text-xs text-gray-400 text-center mt-2">
+            ← Scroll to see full code →
+          </p>
           {/* code div end */}
         </header>
 
@@ -211,15 +224,15 @@ const Intro = () => {
       {/* end get platform */}
 
       {/* get browser */}
-      <section id="browser" className="p-4">
+      <section id="browser" className="p-0 md:p-4">
         <header>
-          <h1 className="text-xl">Get Browser Info</h1>
+          <h1 className="text-lg md:text-xl">Get Browser Info</h1>
           <p className="text-sm">
             Run this to see on which browser you are running on{" "}
           </p>
           {/* code div */}
-          <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
-            <pre>
+          <div className="relative top-2 text-xs md:text-sm bg-[#263238] text-green-300 p-2 md:px-4 lg:px-4 rounded-lg w-full overflow-x-auto">
+            <pre className="min-w-max md:min-w-0">
               <code>{getBrowserCode}</code>
             </pre>
             <button
@@ -229,6 +242,10 @@ const Intro = () => {
               {browser ? "Copied!" : "Copy"}
             </button>
           </div>
+          {/* Mobile scroll hint */}
+          <p className="md:hidden text-xs text-gray-400 text-center mt-2">
+            ← Scroll to see full code →
+          </p>
           {/* code div end */}
         </header>
 
@@ -239,13 +256,13 @@ const Intro = () => {
       {/* end get browser */}
 
       {/* user Agent */}
-      <section id="userAgent" className="p-4">
+      <section id="userAgent" className="p-0 md:p-4">
         <header>
-          <h1 className="text-xl">Get userAgent Info</h1>
+          <h1 className="text-lg md:text-xl">Get userAgent Info</h1>
           <p className="text-sm">Run this to see the user agent info </p>
           {/* code div */}
-          <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
-            <pre>
+          <div className="relative top-2 text-xs md:text-sm bg-[#263238] text-green-300 p-2 md:px-4 lg:px-4 rounded-lg w-full overflow-x-auto">
+            <pre className="min-w-max md:min-w-0">
               <code>{getUserAgentCode}</code>
             </pre>
             <button
@@ -255,6 +272,10 @@ const Intro = () => {
               {userAgent ? "Copied!" : "Copy"}
             </button>
           </div>
+          {/* Mobile scroll hint */}
+          <p className="md:hidden text-xs text-gray-400 text-center mt-2">
+            ← Scroll to see full code →
+          </p>
           {/* code div end */}
         </header>
       </section>

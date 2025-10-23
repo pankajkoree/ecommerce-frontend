@@ -14,10 +14,10 @@ export default function Home() {
     <div className="flex flex-col bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950">
       {/* main content */}
       <main className="flex flex-col items-center justify-center flex-1 text-center px-6 md:px-16 py-12">
-        <h1 className="text-4xl text- md:text-6xl font-bold">
+        <h1 className="text-xl md:text-6xl font-bold">
           Free REST API for Ecommerce Products Data
         </h1>
-        <p className="mt-4 text-lg md:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl">
+        <p className="mt-4 text-sm md:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl">
           Develop, Build, and Test your front-end instantly with our dummy
           e-commerce API. Get ready-to-use JSON data for products, users, carts,
           and more — no backend setup required.
