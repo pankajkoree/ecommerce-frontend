@@ -1,4 +1,6 @@
-import { useState } from "react";
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 
 const Intro = () => {
   const [status, setStatus] = useState(false);
@@ -6,6 +8,7 @@ const Intro = () => {
   const [platform, setPlatform] = useState(false);
   const [browser, setBrowser] = useState(false);
   const [userAgent, setUserAgent] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   // codes for all intro menus
   const getStatusCode = `
@@ -43,9 +46,7 @@ const Intro = () => {
 
 `;
 
-  // end codes for all intro menus
-
-  // handle Click for all intro menus
+  // Copy functions
   const copyStatusCode = async () => {
     try {
       await navigator.clipboard.writeText(getStatusCode);
@@ -96,17 +97,44 @@ const Intro = () => {
     }
   };
 
-  // end handle Click for all intro menus
+  // Scroll function for internal sections
+  useEffect(() => {
+    const handleScroll = (e: Event) => {
+      const element = e.target as HTMLElement;
+      const id = element.getAttribute("data-scroll-id");
+      if (id && contentRef.current) {
+        const section = contentRef.current.querySelector<HTMLElement>(`#${id}`);
+        if (section) {
+          const yOffset = -72;
+          const y = section.offsetTop + yOffset;
+          contentRef.current.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }
+    };
+
+    const buttons = document.querySelectorAll("[data-scroll-id]");
+    buttons.forEach((btn) => btn.addEventListener("click", handleScroll));
+
+    return () => {
+      buttons.forEach((btn) => btn.removeEventListener("click", handleScroll));
+    };
+  }, []);
 
   return (
-    <div className="flex flex-col mt-6 md:mt-0 p-4 md:p-6 lg:p-8 max-w-full overflow-x-hidden">
-      {/* section for dummy intro */}
-      <section className="max-w-full">
-        <header className="p-0 mt-4 md:mt-0 md:p-4 leading-relaxed text-base md:text-xl lg:text-2xl">
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2">
-            🛍️ DummyProducts - Docs
-          </h1>
-          <p className="break-words">
+    <div
+      ref={contentRef}
+      className="flex flex-col mt-6 md:mt-0 p-4 md:p-6 lg:p-8 max-w-full overflow-x-hidden"
+    >
+      {/* Main intro section */}
+      <section className="max-w-full mb-12">
+        <header className="p-0 mt-4 md:mt-0 md:p-4 leading-relaxed">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-3xl md:text-4xl">🛍️</span>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+              DummyProducts - Docs
+            </h1>
+          </div>
+          <p className="break-words text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
             <span>
               DummyProducts is a free and lightweight mock API built for
               developers who need realistic eCommerce data for their front-end
@@ -115,14 +143,17 @@ const Intro = () => {
               ready-to-use endpoints for ecommerce products in clean JSON
               format. <br />
             </span>
+            <br />
             <span>
               Use the examples below to explore how DummyProducts works and
               integrate it easily to the projects. <br />
             </span>
+            <br />
             <span>
               ⚡ Perfect for React, Next.js, Vue, Angular, or any
               REST-compatible frontend. <br />
             </span>
+            <br />
             <span>
               Enjoy developing with DummyProducts — your ultimate dummy
               eCommerce data source! 🚀
@@ -130,156 +161,176 @@ const Intro = () => {
           </p>
         </header>
       </section>
-      {/* send ection for dummy intro */}
 
-      {/* get status */}
-      <section className="p-0 mt-4 md:mt-0 md:p-4 max-w-full" id="status">
+      {/* API Status */}
+      <section className="p-0 md:p-4 max-w-full mb-12" id="status">
         <header className="max-w-full">
-          <h1 className="text-lg md:text-xl lg:text-2xl break-words">API Status</h1>
-          <p className="text-sm md:text-base break-words">Check if internet is working 🫣 </p>
-          {/* code div */}
-          <div className="relative top-0 md:top-2 text-xs md:text-sm bg-[#263238] text-green-300 p-2 md:p-4 lg:px-4 rounded-lg w-full overflow-x-auto">
-            <pre className="min-w-max md:min-w-0">{getStatusCode}</pre>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-2xl">🔍</span>
+            <h1 className="text-lg md:text-xl lg:text-2xl font-semibold break-words">
+              API Status
+            </h1>
+          </div>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 break-words">
+            Check if internet is working 🫣
+          </p>
+
+          {/* Code block */}
+          <div className="relative bg-gradient-to-r from-[#263238] to-[#2a3236] text-green-300 p-4 md:p-5 rounded-lg w-full overflow-x-auto shadow-lg border border-gray-700">
+            <pre className="min-w-max md:min-w-0 text-xs md:text-sm">
+              {getStatusCode}
+            </pre>
 
             <button
               onClick={copyStatusCode}
-              className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded hover:bg-green-600 transition"
+              className="absolute top-3 right-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs px-3 py-1.5 rounded-md hover:from-green-600 hover:to-green-700 transition-all shadow-md"
             >
-              {status ? "Copied!" : "Copy"}
+              {status ? "✓ Copied!" : "Copy"}
             </button>
           </div>
+
           {/* Mobile scroll hint */}
           <p className="md:hidden text-xs text-gray-400 text-center mt-2">
             ← Scroll to see full code →
           </p>
-          {/* code div end */}
         </header>
 
-        {/* div to add a line below to declare as a border */}
-        <p className="bg-[#e8eded] h-1 flex mt-8"></p>
-        {/* div to add a line below to declare as a border */}
+        <div className="bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 h-[2px] flex mt-8 md:mt-10"></div>
       </section>
-      {/* end get status */}
 
-      {/* get host */}
-      <section className="p-0 md:p-4 max-w-full" id="host">
+      {/* Get Host */}
+      <section className="p-0 md:p-4 max-w-full mb-12" id="host">
         <header className="max-w-full">
-          <h1 className="text-lg md:text-xl lg:text-2xl break-words">Get Host</h1>
-          <p className="text-sm md:text-base break-words">Run this to see the host </p>
-          {/* code div */}
-          <div className="relative top-2 text-xs md:text-sm bg-[#263238] text-green-300 p-2 md:px-4 lg:px-4 rounded-lg w-full overflow-x-auto">
-            <pre className="min-w-max md:min-w-0">
-              <code>{getHostCode}</code>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-2xl">🌐</span>
+            <h1 className="text-lg md:text-xl lg:text-2xl font-semibold break-words">
+              Get Host
+            </h1>
+          </div>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 break-words">
+            Run this to see the host
+          </p>
+
+          {/* Code block */}
+          <div className="relative bg-gradient-to-r from-[#263238] to-[#2a3236] text-green-300 p-4 md:p-5 rounded-lg w-full overflow-x-auto shadow-lg border border-gray-700">
+            <pre className="min-w-max md:min-w-0 text-xs md:text-sm">
+              {getHostCode}
             </pre>
             <button
               onClick={copyHostCode}
-              className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded hover:bg-green-600 transition"
+              className="absolute top-3 right-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs px-3 py-1.5 rounded-md hover:from-green-600 hover:to-green-700 transition-all shadow-md"
             >
-              {host ? "Copied!" : "Copy"}
+              {host ? "✓ Copied!" : "Copy"}
             </button>
           </div>
-          {/* Mobile scroll hint */}
+
           <p className="md:hidden text-xs text-gray-400 text-center mt-2">
             ← Scroll to see full code →
           </p>
-          {/* code div end */}
         </header>
 
-        {/* div to add a line below to declare as a border */}
-        <p className="bg-[#e8eded] h-1 flex mt-8"></p>
-        {/* div to add a line below to declare as a border */}
+        <div className="bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 h-[2px] flex mt-8 md:mt-10"></div>
       </section>
-      {/* end get host */}
 
-      {/* get platform */}
-      <section className="p-0 md:p-4 max-w-full" id="platform">
+      {/* Get Platform */}
+      <section className="p-0 md:p-4 max-w-full mb-12" id="platform">
         <header className="max-w-full">
-          <h1 className="text-lg md:text-xl lg:text-2xl break-words">Get Platform</h1>
-          <p className="text-sm md:text-base break-words">
-            Run this to see on which platform of OS you are running on{" "}
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-2xl">💻</span>
+            <h1 className="text-lg md:text-xl lg:text-2xl font-semibold break-words">
+              Get Platform
+            </h1>
+          </div>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 break-words">
+            Run this to see on which platform of OS you are running on
           </p>
-          {/* code div */}
-          <div className="relative top-2 text-xs md:text-sm bg-[#263238] text-green-300 p-2 md:px-4 lg:px-4 rounded-lg w-full overflow-x-auto">
-            <pre className="min-w-max md:min-w-0">
-              <code>{getPlatformCode}</code>
+
+          {/* Code block */}
+          <div className="relative bg-gradient-to-r from-[#263238] to-[#2a3236] text-green-300 p-4 md:p-5 rounded-lg w-full overflow-x-auto shadow-lg border border-gray-700">
+            <pre className="min-w-max md:min-w-0 text-xs md:text-sm">
+              {getPlatformCode}
             </pre>
             <button
               onClick={copyPlatformCode}
-              className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded hover:bg-green-600 transition"
+              className="absolute top-3 right-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs px-3 py-1.5 rounded-md hover:from-green-600 hover:to-green-700 transition-all shadow-md"
             >
-              {platform ? "Copied!" : "Copy"}
+              {platform ? "✓ Copied!" : "Copy"}
             </button>
           </div>
-          {/* Mobile scroll hint */}
+
           <p className="md:hidden text-xs text-gray-400 text-center mt-2">
             ← Scroll to see full code →
           </p>
-          {/* code div end */}
         </header>
 
-        {/* div to add a line below to declare as a border */}
-        <p className="bg-[#e8eded] h-1 flex mt-8"></p>
-        {/* div to add a line below to declare as a border */}
+        <div className="bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 h-[2px] flex mt-8 md:mt-10"></div>
       </section>
-      {/* end get platform */}
 
-      {/* get browser */}
-      <section id="browser" className="p-0 md:p-4">
+      {/* Get Browser */}
+      <section id="browser" className="p-0 md:p-4 mb-12">
         <header>
-          <h1 className="text-lg md:text-xl">Get Browser Info</h1>
-          <p className="text-sm">
-            Run this to see on which browser you are running on{" "}
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-2xl">🌐</span>
+            <h1 className="text-lg md:text-xl lg:text-2xl font-semibold">
+              Get Browser Info
+            </h1>
+          </div>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4">
+            Run this to see on which browser you are running on
           </p>
-          {/* code div */}
-          <div className="relative top-2 text-xs md:text-sm bg-[#263238] text-green-300 p-2 md:px-4 lg:px-4 rounded-lg w-full overflow-x-auto">
-            <pre className="min-w-max md:min-w-0">
-              <code>{getBrowserCode}</code>
+
+          {/* Code block */}
+          <div className="relative bg-gradient-to-r from-[#263238] to-[#2a3236] text-green-300 p-4 md:p-5 rounded-lg w-full overflow-x-auto shadow-lg border border-gray-700">
+            <pre className="min-w-max md:min-w-0 text-xs md:text-sm">
+              {getBrowserCode}
             </pre>
             <button
               onClick={copyBrowserCode}
-              className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded hover:bg-green-600 transition"
+              className="absolute top-3 right-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs px-3 py-1.5 rounded-md hover:from-green-600 hover:to-green-700 transition-all shadow-md"
             >
-              {browser ? "Copied!" : "Copy"}
+              {browser ? "✓ Copied!" : "Copy"}
             </button>
           </div>
-          {/* Mobile scroll hint */}
+
           <p className="md:hidden text-xs text-gray-400 text-center mt-2">
             ← Scroll to see full code →
           </p>
-          {/* code div end */}
         </header>
 
-        {/* div to add a line below to declare as a border */}
-        <p className="bg-[#e8eded] h-1 flex mt-8"></p>
-        {/* div to add a line below to declare as a border */}
+        <div className="bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 h-[2px] flex mt-8 md:mt-10"></div>
       </section>
-      {/* end get browser */}
 
-      {/* user Agent */}
+      {/* User Agent */}
       <section id="userAgent" className="p-0 md:p-4">
         <header>
-          <h1 className="text-lg md:text-xl">Get userAgent Info</h1>
-          <p className="text-sm">Run this to see the user agent info </p>
-          {/* code div */}
-          <div className="relative top-2 text-xs md:text-sm bg-[#263238] text-green-300 p-2 md:px-4 lg:px-4 rounded-lg w-full overflow-x-auto">
-            <pre className="min-w-max md:min-w-0">
-              <code>{getUserAgentCode}</code>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-2xl">🔐</span>
+            <h1 className="text-lg md:text-xl lg:text-2xl font-semibold">
+              Get userAgent Info
+            </h1>
+          </div>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4">
+            Run this to see the user agent info
+          </p>
+
+          {/* Code block */}
+          <div className="relative bg-gradient-to-r from-[#263238] to-[#2a3236] text-green-300 p-4 md:p-5 rounded-lg w-full overflow-x-auto shadow-lg border border-gray-700">
+            <pre className="min-w-max md:min-w-0 text-xs md:text-sm">
+              {getUserAgentCode}
             </pre>
             <button
               onClick={copyUserAgentCode}
-              className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded hover:bg-green-600 transition"
+              className="absolute top-3 right-3 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs px-3 py-1.5 rounded-md hover:from-green-600 hover:to-green-700 transition-all shadow-md"
             >
-              {userAgent ? "Copied!" : "Copy"}
+              {userAgent ? "✓ Copied!" : "Copy"}
             </button>
           </div>
-          {/* Mobile scroll hint */}
+
           <p className="md:hidden text-xs text-gray-400 text-center mt-2">
             ← Scroll to see full code →
           </p>
-          {/* code div end */}
         </header>
       </section>
-      {/* end user agent */}
     </div>
   );
 };

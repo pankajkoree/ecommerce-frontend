@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Intro from "./components/intro/Intro";
 import Products from "./components/products/Products";
 
@@ -23,12 +23,14 @@ const Docs = () => {
   };
 
   const scrollToSection = (id: string) => {
-    const section = contentRef.current?.querySelector<HTMLElement>(`#${id}`);
-    if (section && contentRef.current) {
-      const yOffset = -72;
-      const y = section.offsetTop + yOffset;
-      contentRef.current.scrollTo({ top: y, behavior: "smooth" });
-    }
+    setTimeout(() => {
+      const section = contentRef.current?.querySelector<HTMLElement>(`#${id}`);
+      if (section && contentRef.current) {
+        const yOffset = -72;
+        const y = section.offsetTop + yOffset;
+        contentRef.current.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 100);
   };
 
   const handleViewMobileMenu = () => {
@@ -42,7 +44,7 @@ const Docs = () => {
     <div
       className={`flex flex-col min-h-screen bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950`}
     >
-      {/* on mobile view, it appears only */}
+      {/* Mobile menu button */}
       <div
         className={` ${
           mobileMenuVisible ? "hidden" : "fixed"
@@ -67,11 +69,10 @@ const Docs = () => {
           </g>
         </svg>
       </div>
-      {/*end  on mobile view, it appears only */}
 
-      {/* content for docs */}
+      {/* Main content */}
       <section className="flex max-w-full">
-        {/* side bar navigation */}
+        {/* Side bar navigation */}
         <nav
           className={`${
             mobileMenuVisible ? "block" : "hidden"
@@ -98,79 +99,52 @@ const Docs = () => {
                   <path d="M18.8,16l5.5-5.5c0.8-0.8,0.8-2,0-2.8l0,0C24,7.3,23.5,7,23,7c-0.5,0-1,0.2-1.4,0.6L16,13.2l-5.5-5.5  c-0.8-0.8-2.1-0.8-2.8,0C7.3,8,7,8.5,7,9.1s0.2,1,0.6,1.4l5.5,5.5l-5.5,5.5C7.3,21.9,7,22.4,7,23c0,0.5,0.2,1,0.6,1.4  C8,24.8,8.5,25,9,25c0.5,0,1-0.2,1.4-0.6l5.5-5.5l5.5,5.5c0.8,0.8,2.1,0.8,2.8,0c0.8-0.8,0.8-2.1,0-2.8L18.8,16z" />
                 </svg>
               </div>
-              {/* arrow div */}
-              {/* <div>
-                {intro ? (
-                  <svg
-                    fill="currentColor"
-                    className="w-6 h-6 hover:text-blue-400"
-                    version="1.1"
-                    id="Layer_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 511.735 511.735"
-                  >
-                    <g>
-                      <g>
-                        <path
-                          d="M508.788,371.087L263.455,125.753c-4.16-4.16-10.88-4.16-15.04,0L2.975,371.087c-4.053,4.267-3.947,10.987,0.213,15.04
-			c4.16,3.947,10.667,3.947,14.827,0l237.867-237.76l237.76,237.76c4.267,4.053,10.987,3.947,15.04-0.213
-			C512.734,381.753,512.734,375.247,508.788,371.087z"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                ) : (
-                  <svg
-                    fill="currentColor"
-                    className="w-6 h-6 hover:text-blue-400"
-                    version="1.1"
-                    id="Layer_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 511.787 511.787"
-                  >
-                    <g>
-                      <g>
-                        <path
-                          d="M508.667,125.707c-4.16-4.16-10.88-4.16-15.04,0L255.76,363.573L18,125.707c-4.267-4.053-10.987-3.947-15.04,0.213
-			c-3.947,4.16-3.947,10.667,0,14.827L248.293,386.08c4.16,4.16,10.88,4.16,15.04,0l245.333-245.333
-			C512.827,136.693,512.827,129.867,508.667,125.707z"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                )}
-              </div> */}
             </div>
 
             {/* menu shown below intro */}
             <div className="flex flex-col gap-4 ml-12 animate-fadeIn">
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("status")}
+                onClick={() => {
+                  scrollToSection("status");
+                  handleHideMobileMenu();
+                }}
               >
                 Status
               </button>
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("host")}
+                onClick={() => {
+                  scrollToSection("host");
+                  handleHideMobileMenu();
+                }}
               >
                 Host
               </button>
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("platform")}
+                onClick={() => {
+                  scrollToSection("platform");
+                  handleHideMobileMenu();
+                }}
               >
                 Platform
               </button>
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("browser")}
+                onClick={() => {
+                  scrollToSection("browser");
+                  handleHideMobileMenu();
+                }}
               >
                 Browser
               </button>
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("userAgent")}
+                onClick={() => {
+                  scrollToSection("userAgent");
+                  handleHideMobileMenu();
+                }}
               >
                 User Agent
               </button>
@@ -196,85 +170,61 @@ const Docs = () => {
                   Products
                 </button>
               </div>
-              {/* arrow div */}
-              {/* <div>
-                {showProduct ? (
-                  <svg
-                    fill="currentColor"
-                    className="w-6 h-6 hover:text-blue-400"
-                    version="1.1"
-                    id="Layer_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 511.735 511.735"
-                  >
-                    <g>
-                      <g>
-                        <path
-                          d="M508.788,371.087L263.455,125.753c-4.16-4.16-10.88-4.16-15.04,0L2.975,371.087c-4.053,4.267-3.947,10.987,0.213,15.04
-			c4.16,3.947,10.667,3.947,14.827,0l237.867-237.76l237.76,237.76c4.267,4.053,10.987,3.947,15.04-0.213
-			C512.734,381.753,512.734,375.247,508.788,371.087z"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                ) : (
-                  <svg
-                    fill="currentColor"
-                    className="w-6 h-6 hover:text-blue-400"
-                    version="1.1"
-                    id="Layer_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 511.787 511.787"
-                  >
-                    <g>
-                      <g>
-                        <path
-                          d="M508.667,125.707c-4.16-4.16-10.88-4.16-15.04,0L255.76,363.573L18,125.707c-4.267-4.053-10.987-3.947-15.04,0.213
-			c-3.947,4.16-3.947,10.667,0,14.827L248.293,386.08c4.16,4.16,10.88,4.16,15.04,0l245.333-245.333
-			C512.827,136.693,512.827,129.867,508.667,125.707z"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                )}
-              </div> */}
             </div>
             {/* products menu */}
 
             <div className="flex flex-col gap-4 ml-12 animate-fadeIn">
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("getAllProducts")}
+                onClick={() => {
+                  scrollToSection("getAllProducts");
+                  handleHideMobileMenu();
+                }}
               >
                 All products
               </button>
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("getSingleProductWithId")}
+                onClick={() => {
+                  scrollToSection("getSingleProductWithId");
+                  handleHideMobileMenu();
+                }}
               >
                 Single product with Id
               </button>
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("getSearchProduct")}
+                onClick={() => {
+                  scrollToSection("getSearchProduct");
+                  handleHideMobileMenu();
+                }}
               >
                 Search product
               </button>
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("getLimitedProducts")}
+                onClick={() => {
+                  scrollToSection("getLimitedProducts");
+                  handleHideMobileMenu();
+                }}
               >
                 Limit products quantity
               </button>
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("getLimitedSkippedProducts")}
+                onClick={() => {
+                  scrollToSection("getLimitedSkippedProducts");
+                  handleHideMobileMenu();
+                }}
               >
                 Limit and skip products
               </button>
               <button
                 className="text-left hover:text-blue-400 hover:cursor-pointer"
-                onClick={() => scrollToSection("getProductsCategories")}
+                onClick={() => {
+                  scrollToSection("getProductsCategories");
+                  handleHideMobileMenu();
+                }}
               >
                 Products categories
               </button>
@@ -292,8 +242,6 @@ const Docs = () => {
           {selectedPage === "products" && <Products />}
         </article>
       </section>
-
-      {/* content for docs end */}
     </div>
   );
 };
