@@ -122,22 +122,18 @@ We welcome contributions to the project! Here's how you can contribute:
 
 7.  **Create a pull request:** Go to the original repository on GitHub and click the "Create Pull Request" button.
 
-## License Information
-
-This project is open source and available under the [MIT License](LICENSE).  (Assuming you intend to use MIT license. Otherwise, replace 'MIT License' with the correct License and add a LICENSE file to your project).
-
 ## Acknowledgments
 
 This project utilizes several open-source libraries and frameworks, including:
 
 *   React
 *   Next.js
+*   TypeScript
 *   Tailwind CSS
 *   Lucide React
 *   Radix UI
 *   DummyJSON
 
-We thank the developers and maintainers of these projects for their contributions to the open-source community.
 
 ## Website Link
 [https://ecommerce-frontend-products.vercel.app/](https://ecommerce-frontend-products.vercel.app/)
