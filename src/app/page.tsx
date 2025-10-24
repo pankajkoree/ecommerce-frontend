@@ -12,9 +12,9 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950">
+    <div className="flex flex-col items-center">
       {/* main content */}
-      <div className="flex flex-col items-center max-w-full md:max-w-full lg:w-[70%] text-center mt-4 md:mt-8 lg:mt-16">
+      <div className="flex flex-col items-center max-w-full md:max-w-full lg:w-[70%] text-center mt-4 sm:mt-4 md:mt-8 lg:mt-16 mb-16 sm:20 md:mb-12 lg:mb-0">
         <h1 className="text-xl md:text-5xl font-bold">
           REST API for Ecommerce Products Data
         </h1>
@@ -57,7 +57,7 @@ export default function Home() {
           ].map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow shadow-gray-600 hover:shadow-xl transition-all duration-300 hover:cursor-pointer gap-4"
+              className="flex flex-col items-center bg-white dark:bg-zinc-900 p-4 px-6 rounded-2xl shadow shadow-gray-600 hover:shadow-xl transition-all duration-300 hover:cursor-pointer gap-4"
               onClick={() => handleClick(item.name)}
             >
               <Image

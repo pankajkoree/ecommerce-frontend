@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.className} bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950`}
+        className={`${montserrat.className} `}
       >
         {/* fixed header */}
         <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-purple-200 dark:border-zinc-800">

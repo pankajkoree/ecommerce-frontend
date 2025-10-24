@@ -154,50 +154,136 @@ const Header = () => {
       </div>
 
       {/* Mobile dropdown menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border-t border-purple-200 dark:border-zinc-800">
-          <nav className="flex flex-col items-center gap-4 py-4 text-lg font-medium text-zinc-700 dark:text-zinc-200">
-            <Link
-              href="/"
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            {/* Background Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0  z-40 md:hidden"
               onClick={() => setMenuOpen(false)}
-              className={`${
-                pathname === "/" ? "text-blue-500" : "hover:text-blue-400"
-              }`}
-            >
-              Home
-            </Link>
+            />
 
-            <Link
-              href="/docs"
-              onClick={() => setMenuOpen(false)}
-              className={`${
-                pathname.startsWith("/docs")
-                  ? "text-blue-500"
-                  : "hover:text-blue-400"
-              }`}
+            {/* Sliding Menu */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className={`fixed top-0 right-0 ${
+                isOpen ? "h-80" : "h-60"
+              } w-2/4 sm:w-1/2 bg-[#faf5ff] dark:bg-[#19191c] border-l border-purple-200 dark:border-zinc-800 z-50 md:hidden shadow-sm shadow-zinc-300`}
             >
-              Docs
-            </Link>
+              {/* Close (X) Button */}
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-purple-200 dark:hover:bg-zinc-800 transition-colors"
+                aria-label="Close menu"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
 
-            <Link
-              href="https://github.com/pankajkoree/ecommerce-frontend"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-blue-400"
-            >
-              <Image src="/github.svg" width={20} height={20} alt="github" />
-              Github
-            </Link>
+              {/* Navigation Links */}
+              <nav className="flex flex-col items-start gap-4 py-10 px-6 text-lg font-medium text-zinc-700 dark:text-zinc-200">
+                <Link
+                  href="/"
+                  onClick={() => setMenuOpen(false)}
+                  className={`${
+                    pathname === "/" ? "text-blue-500" : "hover:text-blue-400"
+                  }`}
+                >
+                  Home
+                </Link>
 
-            <button
-              onClick={changeTheme}
-              className="flex items-center gap-2 rounded-full p-2 bg-purple-100 dark:bg-zinc-800 hover:scale-105 transition-transform"
-            >
-              <Image src="/theme.png" width={20} height={20} alt="theme" />
-            </button>
-          </nav>
-        </div>
-      )}
+                {/* Docs with Submenu */}
+                <div className="flex flex-col w-full">
+                  <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className={`text-left ${
+                      pathname.startsWith("/docs")
+                        ? "text-blue-500"
+                        : "hover:text-blue-400"
+                    }`}
+                  >
+                    Docs
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.15 }}
+                        className="ml-4 mt-2 flex flex-col gap-2 border-l-2 border-blue-300 pl-3"
+                      >
+                        <Link
+                          href="/docs/intro"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            setIsOpen(false);
+                          }}
+                          className="hover:text-blue-500"
+                        >
+                          Intro
+                        </Link>
+                        <Link
+                          href="/docs/products"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            setIsOpen(false);
+                          }}
+                          className="hover:text-blue-500"
+                        >
+                          Products
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <Link
+                  href="https://github.com/pankajkoree/ecommerce-frontend"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-blue-400"
+                >
+                  <Image
+                    src="/github.svg"
+                    width={20}
+                    height={20}
+                    alt="github"
+                  />
+                  Github
+                </Link>
+
+                <button
+                  onClick={changeTheme}
+                  className="flex items-center gap-2 rounded-full p-2 bg-purple-100 dark:bg-zinc-800 hover:scale-105 transition-transform"
+                >
+                  <Image src="/theme.png" width={20} height={20} alt="theme" />
+                </button>
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
