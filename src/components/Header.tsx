@@ -4,17 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Quintessential } from "next/font/google";
-
-const yellowtail = Quintessential({
-  subsets: ["latin"],
-  weight: "400",
-});
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isDark, setIsDark] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -34,19 +30,14 @@ const Header = () => {
   const changeTheme = () => setIsDark((old) => !old);
 
   if (!isMounted) {
-    return (
-      <div className="h-6 w-6 rounded bg-gray-300 dark:bg-gray-600 animate-pulse" />
-    );
+    return <div className="h-6 w-6 rounded animate-pulse" />;
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-purple-200 dark:border-zinc-800 backdrop-blur-xl bg-white/70 dark:bg-zinc-900/50">
+    <header className="sticky top-0 z-50 w-full border-b border-purple-200 dark:border-zinc-800 backdrop-blur-xl">
       <div className="flex items-center justify-between max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8">
         {/* Brand / Logo */}
-        <Link
-          href="/"
-          className={`text-2xl lg:text-4xl font-extrabold ${yellowtail.className}`}
-        >
+        <Link href="/" className={`text-2xl lg:text-4xl font-extrabold`}>
           DummyProducts
         </Link>
 
@@ -55,24 +46,55 @@ const Header = () => {
           <Link
             href="/"
             className={`transition-colors ${
-              pathname === "/"
-                ? "text-blue-500"
-                : "hover:text-blue-400"
+              pathname === "/" ? "text-blue-500" : "hover:text-blue-400"
             }`}
           >
             Home
           </Link>
 
-          <Link
-            href="/docs"
-            className={`transition-colors ${
-              pathname.startsWith("/docs")
-                ? "text-blue-500"
-                : "hover:text-blue-400"
-            }`}
+          <div
+            className="relative"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
           >
-            Docs
-          </Link>
+            {/* Main Docs Link */}
+            <Link
+              href="/docs"
+              className={`transition-colors ${
+                pathname.startsWith("/docs")
+                  ? "text-blue-500"
+                  : "hover:text-blue-400"
+              }`}
+            >
+              Docs
+            </Link>
+
+            {/* Dropdown Menu */}
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute left-1/2 top-full mt-5 -translate-x-1/2 flex items-center gap-4 shadow-lg shadow-gray-600 border px-4 py-2 z-50"
+                >
+                  <Link
+                    href="/docs/test"
+                    className="hover:text-blue-500  shadow shadow-gray-600 hover:shadow-lg px-4 py-1"
+                  >
+                    Test
+                  </Link>
+                  <Link
+                    href="/docs/products"
+                    className="hover:text-blue-500  shadow shadow-gray-600 hover:shadow-lg px-4 py-1"
+                  >
+                    Products
+                  </Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           <Link
             href="https://github.com/pankajkoree/ecommerce-frontend"

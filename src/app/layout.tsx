@@ -14,14 +14,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className}`}>
+      <body
+        className={`${montserrat.className} bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950`}
+      >
         {/* fixed header */}
         <div className="sticky top-0 z-50 backdrop-blur-xl border-b border-purple-200 dark:border-zinc-800">
           <Header />
         </div>
         {children}
         {/* fixed footer */}
-        <div className="sticky bottom-0 z-50 backdrop-blur-xl border-t border-purple-200 dark:border-zinc-800">
+        <div className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-xl border-t border-purple-200 dark:border-zinc-800">
           <Footer />
         </div>
       </body>

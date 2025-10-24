@@ -11,7 +11,7 @@ export default function Home() {
     );
   };
   return (
-    <div className="flex flex-col bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950">
+    <div className="flex flex-col">
       {/* main content */}
       <main className="flex flex-col items-center justify-center flex-1 text-center px-6 md:px-16 py-12">
         <h1 className="text-xl md:text-6xl font-bold">

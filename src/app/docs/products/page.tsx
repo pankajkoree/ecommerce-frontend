@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 
 const Products = () => {
@@ -116,7 +118,9 @@ const Products = () => {
   // end handle Click for all intro menus
 
   return (
-    <div>
+    <div
+      className={`flex flex-col justify-center items-center bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950 hover:bg-red`}
+    >
       {/* section for dummy intro */}
       <section>
         <header className="p-4 leading-relaxed text-2xl">
@@ -159,7 +163,9 @@ const Products = () => {
       <section className="p-4" id="getAllProducts">
         <header>
           <h1 className="text-xl">Get all products</h1>
-          <p className="text-sm">To fetch all the products with their details </p>
+          <p className="text-sm">
+            To fetch all the products with their details{" "}
+          </p>
           {/* code div */}
           <div className="relative top-2 bg-[#263238] text-green-300 px-4 rounded-lg">
             <pre>

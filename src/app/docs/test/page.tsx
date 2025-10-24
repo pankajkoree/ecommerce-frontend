@@ -123,7 +123,7 @@ const Intro = () => {
   return (
     <div
       ref={contentRef}
-      className="flex flex-col mt-6 md:mt-0 p-4 md:p-6 lg:p-8 max-w-full overflow-x-hidden"
+      className="flex flex-col mt-2 md:mt-0 px-4 md:px-4 lg:px-8 max-w-full md:max-w-full lg:w-[70%] overflow-x-hidden"
     >
       {/* Main intro section */}
       <section className="max-w-full mb-12">
@@ -301,7 +301,7 @@ const Intro = () => {
       </section>
 
       {/* User Agent */}
-      <section id="userAgent" className="p-0 md:p-4">
+      <section id="userAgent" className="p-0 md:p-4 mb-8">
         <header>
           <div className="flex items-center gap-2 mb-2">
             <span className="text-2xl">🔐</span>
@@ -314,7 +314,7 @@ const Intro = () => {
           </p>
 
           {/* Code block */}
-          <div className="relative bg-gradient-to-r from-[#263238] to-[#2a3236] text-green-300 p-4 md:p-5 rounded-lg w-full overflow-x-auto shadow-lg border border-gray-700">
+          <div className="relative bg-gradient-to-r from-[#263238] to-[#2a3236] text-green-300 p-4 md:p-5 rounded-lg w-full overflow-x-auto shadow-lg border border-gray-700 mb-8">
             <pre className="min-w-max md:min-w-0 text-xs md:text-sm">
               {getUserAgentCode}
             </pre>
