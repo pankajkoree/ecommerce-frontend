@@ -5,27 +5,26 @@ const Footer = () => {
     <footer className="flex sm:flex-row justify-between items-center gap-4 py-2 px-6 border-t border-purple-100 dark:border-zinc-800 text-sm text-zinc-600 dark:text-zinc-400 backdrop-blur-xl">
       {/* Left Section */}
       <div className="flex items-center gap-3">
-  {/* Mobile view: only icon */}
-  <a
-    href="https://www.buymeacoffee.com/pankajkoree"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block sm:hidden text-2xl"
-  >
-    ☕
-  </a>
+        {/* Mobile view: only icon */}
+        <a
+          href="/donation"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block sm:hidden text-2xl"
+        >
+          ☕
+        </a>
 
-  {/* Tablet and larger: full styled button */}
-  <a
-    href="https://www.buymeacoffee.com/pankajkoree"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hidden sm:flex items-center gap-2 px-4 py-2 border border-yellow-300 bg-purple-300 hover:bg-yellow-400 text-black font-medium shadow-md transition-all"
-  >
-    ☕ Buy Me a Coffee
-  </a>
-</div>
-
+        {/* Tablet and larger: full styled button */}
+        <a
+          href="donation"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden sm:flex items-center gap-2 px-4 py-2 border border-yellow-300 bg-purple-300 hover:bg-yellow-400 text-black font-medium shadow-md transition-all"
+        >
+          ☕ Buy Me a Coffee
+        </a>
+      </div>
 
       {/* Right Section */}
       <div className="flex items-center gap-4">
