@@ -80,10 +80,10 @@ const Header = () => {
                   className="absolute left-1/2 top-full mt-5 -translate-x-1/2 flex items-center gap-4 shadow-lg shadow-gray-600 border px-4 py-2 z-50"
                 >
                   <Link
-                    href="/docs/test"
+                    href="/docs/intro"
                     className="hover:text-blue-500  shadow shadow-gray-600 hover:shadow-lg px-4 py-1"
                   >
-                    Test
+                    Intro
                   </Link>
                   <Link
                     href="/docs/products"

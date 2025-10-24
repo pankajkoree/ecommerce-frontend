@@ -10,13 +10,15 @@ export default function Home() {
       `https://ecommerce-backend-r0s1.onrender.com/api/products/category/${categoryName}`
     );
   };
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center bg-gradient-to-b from-purple-50 to-white dark:from-zinc-900 dark:to-zinc-950">
       {/* main content */}
-      <main className="flex flex-col items-center justify-center flex-1 text-center px-6 md:px-16 py-12">
-        <h1 className="text-xl md:text-6xl font-bold">
-          Free REST API for Ecommerce Products Data
+      <div className="flex flex-col items-center max-w-full md:max-w-full lg:w-[70%] text-center mt-4 md:mt-8 lg:mt-16">
+        <h1 className="text-xl md:text-5xl font-bold">
+          REST API for Ecommerce Products Data
         </h1>
+
         <p className="mt-4 text-sm md:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl">
           Develop, Build, and Test your front-end instantly with our dummy
           e-commerce API. Get ready-to-use JSON data for products, users, carts,
@@ -42,9 +44,7 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Example SVG products section */}
-
-        <section className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 font-bold">
+        <section className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 font-bold md:mb-8 lg:mb-0">
           {[
             { name: "Smartphone", svg: "/svg/smartphones.svg" },
             { name: "Laptop", svg: "/svg/laptops.svg" },
@@ -73,7 +73,7 @@ export default function Home() {
             </div>
           ))}
         </section>
-      </main>
+      </div>
     </div>
   );
 }
