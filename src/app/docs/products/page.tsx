@@ -145,7 +145,7 @@ const Products = () => {
             {/* end heading div */}
 
             {/* heading content */}
-            <p>
+            <p className="break-words text-sm md:text-base lg:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
               The <strong>Products API</strong> offers structured access to
               detailed product data, enabling seamless integration for inventory
               management, e-commerce platforms, and analytics dashboards. It

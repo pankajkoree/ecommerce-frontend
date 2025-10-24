@@ -11,7 +11,7 @@ const Donation = () => {
       <div className="flex flex-col mt-2 md:mt-0 px-4 md:px-4 lg:px-8 max-w-full md:max-w-full lg:w-[50%] overflow-x-hidden">
         <div className="flex flex-col items-center md:flex-row p-2 md:p-2 lg:p-4">
           {/* div for developer info */}
-          <div className="flex md:flex-col mr-2 px-0 gap-0 md:gap-4 md:px-4">
+          <div className="flex flex-col md:flex-col mr-2 px-0 gap-0 md:gap-4 md:px-4">
             {/* name */}
             <h1 className="text-sm md:text-2xl mt-0 md:mt-8">Pankaj Kori</h1>
 
@@ -22,7 +22,7 @@ const Donation = () => {
             </p>
 
             {/* github logo */}
-            <div>
+            <div className="mt-4 md:mt-0">
               <Link href="https://github.com/pankajkoree" target="_blank">
                 <svg
                   width="32px"
@@ -60,7 +60,7 @@ const Donation = () => {
 
             {/* donors info */}
 
-            <div className="flex flex-col gap-2 mt-0 md:mt-8">
+            <div className="flex flex-col gap-2 mt-8 md:mt-8">
               <input
                 type="text"
                 name="donorsInfo"
@@ -90,7 +90,7 @@ const Donation = () => {
             <svg
               version="1.0"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-80 md:w-100 h-80 md:h-160"
+              className="w-80 h-80 md:w-100 md:h-120 lg:w-100 lg:h-160"
               viewBox="0 0 981.000000 1525.000000"
               preserveAspectRatio="xMidYMid meet"
             >

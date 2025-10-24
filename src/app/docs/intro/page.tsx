@@ -138,7 +138,7 @@ const Intro = () => {
                 DummyProducts - Docs
               </h1>
             </div>
-            <p className="break-words text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+            <p className="break-words text-sm md:text-base lg:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
               <span>
                 DummyProducts is a free and lightweight mock API built for
                 developers who need realistic eCommerce data for their front-end
