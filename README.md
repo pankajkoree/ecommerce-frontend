@@ -15,7 +15,7 @@ UI for the ecommerce products
 
 ## Prerequisites & Dependencies
 
-Before you begin, ensure you have the following installed:
+Before you begin, ensure you should have the following installed:
 
 *   **Node.js:** Version 18 or higher.  You can download it from [nodejs.org](https://nodejs.org/).
 *   **npm:**  Usually comes with Node.js.  You can check its version with `npm -v`.
